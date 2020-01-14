@@ -6,4 +6,4 @@
 
 // ReferenceError: alert is not defined(alert is not js grammar)
 // alert('hello');
-console.log('11');
+console.log('Hello JavaScript!');
