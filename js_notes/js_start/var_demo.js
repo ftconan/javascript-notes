@@ -3,9 +3,13 @@
 @file:   var_demo
 @date:   2020/1/15
 */
+'use strict';
+
+let z;
+
 if (2 > 1) {
-    x = 1;
-    y = 2;
+    let x = 1;
+    let y = 2;
     z = 3;
     if (x < y) {
         z = 4;

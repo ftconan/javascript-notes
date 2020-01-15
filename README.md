@@ -4,3 +4,4 @@ JavaScript study notes
 1. JavaScript教程
 2. 快速入门
  * 基本语法
+ * 数据类型和变量
