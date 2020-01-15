@@ -5,3 +5,4 @@ JavaScript study notes
 2. 快速入门
  * 基本语法
  * 数据类型和变量
+ * 字符串
