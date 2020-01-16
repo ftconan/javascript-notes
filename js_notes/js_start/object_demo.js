@@ -42,4 +42,3 @@ let xiaohong = {
 console.log(xiaohong['middle-school']);
 console.log(xiaohong['name']);
 console.log(xiaohong.name);
-
