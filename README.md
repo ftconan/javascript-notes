@@ -7,3 +7,4 @@ JavaScript study notes
  * 数据类型和变量
  * 字符串
  * 数组
+ * 对象
