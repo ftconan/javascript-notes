@@ -6,3 +6,4 @@ JavaScript study notes
  * 基本语法
  * 数据类型和变量
  * 字符串
+ * 数组
