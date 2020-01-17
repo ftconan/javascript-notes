@@ -8,3 +8,4 @@ JavaScript study notes
  * 字符串
  * 数组
  * 对象
+ * 循环
