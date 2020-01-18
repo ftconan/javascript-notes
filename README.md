@@ -11,3 +11,5 @@ JavaScript study notes
  * 循环
  * Map和Set
  * iterable
+### 3. 函数
+ * 函数定义和调用
