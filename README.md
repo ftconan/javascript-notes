@@ -10,3 +10,4 @@ JavaScript study notes
  * 对象
  * 循环
  * Map和Set
+ * iterable
