@@ -17,3 +17,4 @@ JavaScript study notes
  * 方法
  * 高阶函数
      1. map/reduce
+     2. filter
