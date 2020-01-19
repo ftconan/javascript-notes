@@ -18,3 +18,4 @@ JavaScript study notes
  * 高阶函数
      1. map/reduce
      2. filter
+     2. sort
