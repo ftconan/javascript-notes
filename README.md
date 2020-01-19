@@ -19,3 +19,4 @@ JavaScript study notes
      1. map/reduce
      2. filter
      2. sort
+     2. Array
