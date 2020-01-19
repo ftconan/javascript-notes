@@ -14,3 +14,4 @@ JavaScript study notes
 ### 3. 函数
  * 函数定义和调用
  * 变量作用域与解构赋值
+ * 方法
