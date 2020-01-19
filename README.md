@@ -15,3 +15,5 @@ JavaScript study notes
  * 函数定义和调用
  * 变量作用域与解构赋值
  * 方法
+ * 高阶函数
+     1. map/reduce
