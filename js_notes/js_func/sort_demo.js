@@ -1,6 +1,6 @@
 /*
 @author: magician
-@file:   sort_dem.js
+@file:   sort_demo.js
 @date:   2020/1/19
 */
 'use strict';
