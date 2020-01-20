@@ -21,3 +21,4 @@ JavaScript study notes
      3. sort
      4. Array
  * 闭包
+ * 箭头函数
