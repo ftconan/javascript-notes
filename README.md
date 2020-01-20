@@ -22,3 +22,4 @@ JavaScript study notes
      4. Array
  * 闭包
  * 箭头函数
+ * generator
