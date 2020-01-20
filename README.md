@@ -24,3 +24,4 @@ JavaScript study notes
  * 箭头函数
  * generator
 ### 4. 标准对象
+ * Date
