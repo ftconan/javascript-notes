@@ -18,5 +18,6 @@ JavaScript study notes
  * 高阶函数
      1. map/reduce
      2. filter
-     2. sort
-     2. Array
+     3. sort
+     4. Array
+ * 闭包
