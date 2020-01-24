@@ -25,3 +25,4 @@ JavaScript study notes
  * generator
 ### 4. 标准对象
  * Date
+ * RegExp
