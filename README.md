@@ -26,3 +26,4 @@ JavaScript study notes
 ### 4. 标准对象
  * Date
  * RegExp
+ * JSON

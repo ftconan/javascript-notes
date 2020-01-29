@@ -8,6 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <title>alert_demo</title>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script>
         // alert('Hello World');
 
@@ -32,18 +33,29 @@
         // }
 
         // 装饰器
-        let count = 0;
-        let oldParseInt = parseInt;
-        window.oldParseInt = function () {
-            count += 1;
-            return oldParseInt.apply(null, arguments);
-        };
+        // let count = 0;
+        // let oldParseInt = parseInt;
+        // window.oldParseInt = function () {
+        //     count += 1;
+        //     return oldParseInt.apply(null, arguments);
+        // };
 
         // 测试:
-        parseInt('10');
-        parseInt('20');
-        parseInt('30');
-        console.log('count = ' + count);
+        // parseInt('10');
+        // parseInt('20');
+        // parseInt('30');
+        // console.log('count = ' + count);
+
+        // 天气API
+        let url = 'https://api.openweathermap.org/data/2.5/forecast?q=Beijing,cn&appid=800f49846586c3ba6e7052cfc89af16c';
+        $.getJSON(url, function (data) {
+            let info = {
+                city: data.city.name,
+                weather: data.list[0].weather[0].main,
+                time: data.list[0].dt_txt
+            };
+            alert(JSON.stringify(info, null, '  '));
+        });
     </script>
 </head>
 <body>
