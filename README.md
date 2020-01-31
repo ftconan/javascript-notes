@@ -30,3 +30,5 @@ JavaScript study notes
 ### 5. 面向对象编程
  * 创建对象
  * 原型继承
+ * class继承
+
