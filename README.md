@@ -28,3 +28,4 @@ JavaScript study notes
  * RegExp
  * JSON
 ### 5. 面向对象编程
+ * 创建对象
