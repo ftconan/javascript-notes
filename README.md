@@ -33,3 +33,4 @@ JavaScript study notes
  * class继承
 ### 6. 浏览器
  * 浏览器对象
+ * 操作DOM

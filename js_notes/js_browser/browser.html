@@ -42,6 +42,23 @@
 
         // document
         document.title = '努力学习JavaScript!';
+
+        // 返回ID为'test'的节点：
+        // let test = document.getElementById('test');
+        // 先定位ID为'test-table'的节点，再返回其内部所有tr节点：
+        // let trs = document.getElementById('test-table').getElementsByTagName('tr');
+        // 先定位ID为'test-div'的节点，再返回其内部所有class包含red的节点：
+        // let reds = document.getElementById('test-div').getElementsByClassName('red');
+        // 获取节点test下的所有直属子节点:
+        // let cs = test.children;
+        // 获取节点test下第一个、最后一个子节点：
+        // let first = test.firstElementChild;
+        // let last = test.lastElementChild;
+
+        // 通过querySelector获取ID为q1的节点：
+        // let q1 = document.querySelector('#q1');
+        // 通过querySelectorAll获取q1节点内的符合条件的所有节点：
+        // let ps = q1.querySelectorAll('div.highlighted > p');
     </script>
 </head>
 <body>
@@ -54,19 +71,52 @@
         <dd>鲜榨苹果汁</dd>
     </dl>
 
+    <div id="test-div">
+        <div class="c-red">
+            <p id="test-p">JavaScript</p>
+            <p>Java</p>
+        </div>
+        <div class="c-red c-green">
+            <p>Python</p>
+            <p>Ruby</p>
+            <p>Swift</p>
+        </div>
+        <div class="c-green">
+            <p>Scheme</p>
+            <p>Haskell</p>
+        </div>
+    </div>
+
     <script>
         // let menu = document.getElementById('drink-menu');
         let drinks = document.getElementsByTagName('dt');
         let i, s;
 
         s = '提供的饮料有:';
-        for (i=0; i<drinks.length; i++) {
+        for (i = 0; i < drinks.length; i++) {
             s = s + drinks[i].innerHTML + ',';
         }
         console.log(s);
 
         // cookies
         console.log(document.cookie);
+
+        // 选择<p>JavaScript</p>:
+        let js = document.getElementById('test-p');
+        // 选择<p>Python</p>,<p>Ruby</p>,<p>Swift</p>:
+        let arr = document.getElementsByClassName('c-red')[1].children;
+        // 选择<p>Haskell</p>:
+        let haskell = document.getElementsByClassName('c-green')[1].lastElementChild;
+        // 测试:
+        if (!js || js.innerText !== 'JavaScript') {
+            alert('选择JavaScript失败!');
+        } else if (!arr || arr.length !== 3 || !arr[0] || !arr[1] || !arr[2] || arr[0].innerText !== 'Python' || arr[1].innerText !== 'Ruby' || arr[2].innerText !== 'Swift') {
+            console.log('选择Python,Ruby,Swift失败!');
+        } else if (!haskell || haskell.innerText !== 'Haskell') {
+            console.log('选择Haskell失败!');
+        } else {
+            console.log('测试通过!');
+        }
     </script>
 </body>
 </html>
