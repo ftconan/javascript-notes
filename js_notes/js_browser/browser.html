@@ -1,0 +1,70 @@
+<!--
+@author: magician
+@file:   browser.html
+@date:   2020/1/31
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>browser</title>
+    <script>
+        // window
+        // 可以调整浏览器窗口大小试试:
+        console.log('window inner size: ' + window.innerWidth + ' x ' + window.innerHeight);
+
+        // navigator
+        console.log('appName = ' + navigator.appName);
+        console.log('appVersion = ' + navigator.appVersion);
+        console.log('language = ' + navigator.language);
+        console.log('platform = ' + navigator.platform);
+        console.log('userAgent = ' + navigator.userAgent);
+
+        let width = window.innerWidth || window.innerHeight;
+        console.log('window width: ' + width);
+
+        // screen
+        console.log('Screen size = ' + screen.width + ' x ' + screen.height);
+
+        // location
+        console.log(location.protocol);
+        console.log(location.host);
+        console.log(location.port);
+        console.log(location.pathname);
+        console.log(location.search);
+        console.log(location.hash);
+
+        // if (confirm('重新加载当前页' + location.href + '?')) {
+        //     location.reload();
+        // } else {
+        //     location.assign('/'); // 设置一个新的URL地址
+        // }
+
+        // document
+        document.title = '努力学习JavaScript!';
+    </script>
+</head>
+<body>
+    <dl id="drink-menu" style="border:solid 1px #ccc;padding:6px;">
+        <dt>摩卡</dt>
+        <dd>热摩卡咖啡</dd>
+        <dt>酸奶</dt>
+        <dd>北京老酸奶</dd>
+        <dt>果汁</dt>
+        <dd>鲜榨苹果汁</dd>
+    </dl>
+
+    <script>
+        // let menu = document.getElementById('drink-menu');
+        let drinks = document.getElementsByTagName('dt');
+        let i, s;
+
+        s = '提供的饮料有:';
+        console.log(drinks.length);
+        for (i=0; i<drinks.length; i++) {
+            s = s + drinks[i].innerHTML + ',';
+        }
+        console.log(s);
+    </script>
+</body>
+</html>

@@ -31,4 +31,5 @@ JavaScript study notes
  * 创建对象
  * 原型继承
  * class继承
-
+### 6. 浏览器
+ * 浏览器对象
