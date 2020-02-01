@@ -35,3 +35,4 @@ JavaScript study notes
  * 浏览器对象
  * 操作DOM
     1. 更新DOM
+    2. 插入DOM
