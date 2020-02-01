@@ -34,3 +34,4 @@ JavaScript study notes
 ### 6. 浏览器
  * 浏览器对象
  * 操作DOM
+    1. 更新DOM
