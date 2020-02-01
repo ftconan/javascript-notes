@@ -120,6 +120,20 @@
         <li class="lang">Haskell</li>
     </ol>
 
+    <div id="parent">
+        <p>First</p>
+        <p>Second</p>
+    </div>
+
+    <ul id="test-list1">
+        <li>JavaScript</li>
+        <li>Swift</li>
+        <li>HTML</li>
+        <li>ANSI</li>
+        <li>CSS</li>
+        <li>DirectX</li>
+    </ul>
+
     <script>
         // let menu = document.getElementById('drink-menu');
         let drinks = document.getElementsByTagName('dt');
@@ -208,6 +222,47 @@
         for (let i = 0; i < arr1.length; i++) {
             list1.children[i].innerText = arr1[i];
         }
+
+        // 拿到待删除节点:
+        // let self = document.getElementById('to-be-removed');
+        // 拿到父节点:
+        // let parent = self.parentElement;
+        // 删除:
+        // let removed = parent.removeChild(self);
+        // console.log(removed === self);
+
+        let parent = document.getElementById('parent');
+        parent.removeChild(parent.children[0]);
+        // parent.removeChild(parent.children[1]);
+
+        let parent1 = document.getElementById('test-list1');
+        let arr2 = Array.from(parent1.children);
+
+        let res = arr2.filter(function (x) {
+            return ['JavaScript', 'HTML', 'CSS'].indexOf(x.innerText) === -1;
+        });
+        for (let i = 0; i < res.length; i++) {
+            parent1.removeChild(res[i]);
+        }
+        // 测试:
+        (function () {
+            let
+                arr, i,
+                t = document.getElementById('test-list');
+            if (t && t.children && t.children.length === 3) {
+                arr = [];
+                for (i = 0; i < t.children.length; i++) {
+                    arr.push(t.children[i].innerText);
+                }
+                if (arr.toString() === ['JavaScript', 'HTML', 'CSS'].toString()) {
+                    console.log('测试通过!');
+                } else {
+                    console.log('测试失败: ' + arr.toString());
+                }
+            } else {
+                console.log('测试失败!');
+            }
+        })();
     </script>
 </body>
 </html>

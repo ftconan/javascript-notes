@@ -36,3 +36,4 @@ JavaScript study notes
  * 操作DOM
     1. 更新DOM
     2. 插入DOM
+    3. 删除DOM
