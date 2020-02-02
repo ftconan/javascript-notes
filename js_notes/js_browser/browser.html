@@ -9,6 +9,8 @@
     <meta charset="UTF-8">
     <title>browser</title>
     <script>
+        'use strict';
+
         // window
         // 可以调整浏览器窗口大小试试:
         console.log('window inner size: ' + window.innerWidth + ' x ' + window.innerHeight);
@@ -61,7 +63,7 @@
         // let ps = q1.querySelectorAll('div.highlighted > p');
 
         // 获取<p id="p-id">...</p>
-        let p = document.getElementById('p-id');
+        // let p = document.getElementById('p-id');
         // 设置文本为abc:
         // p.innerHTML = 'ABC';
         // 设置HTML:
@@ -69,9 +71,29 @@
         // 设置文本:
         // p.innerText = 'ABC';
         // 设置CSS:
-        p.style.color = '#ff0000';
-        p.style.fontSize = '20px';
-        p.style.paddingTop = '2em';
+        // p.style.color = '#ff0000';
+        // p.style.fontSize = '20px';
+        // p.style.paddingTop = '2em';
+
+        // 获取值
+        // <input type="text" id="email">
+        // let input = document.getElementById('email');
+        // console.log(input.value);
+
+        // <label><input type="radio" name="weekday" id="monday" value="1"> Monday</label>
+        // <label><input type="radio" name="weekday" id="tuesday" value="2"> Tuesday</label>
+        // let mon = document.getElementById('monday');
+        // let tue = document.getElementById('tuesday');
+        //
+        // console.log(mon.value);
+        // console.log(tue.value);
+        // console.log(mon.checked);
+        // console.log(tue.checked);
+
+        // 设置值
+        // <input type="text" id="email">
+        // let input = document.getElementById('email');
+        // input.value = 'test@example.com';
     </script>
 </head>
 <body>
@@ -134,7 +156,54 @@
         <li>DirectX</li>
     </ul>
 
+    <label>
+        <input type="date" value="2015-07-01">
+        <input type="datetime-local" value="2015-07-01T02:03:04">
+        <input type="color" value="#ff0000">
+    </label>
+
+<!--    <form id="test-from">-->
+<!--        <label>-->
+<!--            <input type="text" name="test">-->
+<!--        </label>-->
+<!--        <button type="button" onclick="doSubmitForm()">Submit</button>-->
+<!--    </form>-->
+
+<!--    <form id="test-from" onsubmit="return checkForm()">-->
+<!--        <label>-->
+<!--            <input type="text" name="test">-->
+<!--        </label>-->
+<!--        <button type="submit">Submit</button>-->
+<!--    </form>-->
+
+    <form id="login-form" method="post" onsubmit="return checkForm()">
+        <label>
+            <input type="text" id="username1" name="username">
+            <input type="password" id="input-password">
+            <input type="hidden" id="md5-password" name="password">
+            <button id="submit">Submit</button>
+        </label>
+    </form>
+
+    <form id="test-register" action="#" target="_blank" onsubmit="return checkRegisterForm()">
+        <p id="test-error" style="color:red"></p>
+        <p>
+            <label for="username">用户名：</label><input type="text" id="username">
+        </p>
+        <p>
+            <label for="password">口令：</label><input type="password" id="password" name="password">
+        </p>
+        <p>
+            <label for="password-2">重复口令：</label><input type="password" id="password-2">
+        </p>
+        <p>
+            <button type="submit">提交</button><button type="reset">重置</button>
+        </p>
+    </form>
+
     <script>
+        'use strict';
+
         // let menu = document.getElementById('drink-menu');
         let drinks = document.getElementsByTagName('dt');
         let i, s;
@@ -261,6 +330,51 @@
                 }
             } else {
                 console.log('测试失败!');
+            }
+        })();
+
+        // function doSubmitForm() {
+        //     let form = document.getElementById('test-form');
+        //     // 可以在此修改form的input...
+        //     // 提交form:
+        //     form.submit();
+        // }
+
+        function checkForm() {
+            // let form = document.getElementById('test-form');
+            // // 可以在此修改form的input...
+            // // 继续下一步:
+            // return true;
+
+            let input_pwd = document.getElementById('input-password');
+            let md5_pwd = document.getElementById('md5-password');
+            // 把用户输入的明文变为MD5:
+            md5_pwd.value = toMD5(input_pwd.value);
+
+            return true;
+        }
+
+        let checkRegisterForm = function () {
+                let re1 = /^\w{3,10}$/;
+                let re2 = /^.{6,20}$/;
+                let username = document.getElementById('username');
+                let pwd = document.getElementById('password');
+                let pwd2 = document.getElementById('password-2');
+
+                return re1.test(username.value) && re2.test(pwd.value) && pwd.value === pwd2.value;
+            };
+        // 测试:
+        (function () {
+            window.testFormHandler = checkRegisterForm;
+            let form = document.getElementById('test-register');
+            if (form.dispatchEvent) {
+                let event = new Event('submit', {
+                    bubbles: true,
+                    cancelable: true
+                });
+                form.dispatchEvent(event);
+            } else {
+                form.fireEvent('onsubmit');
             }
         })();
     </script>
