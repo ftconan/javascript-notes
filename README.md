@@ -38,3 +38,4 @@ JavaScript study notes
     2. 插入DOM
     3. 删除DOM
  * 操作表单
+ * 操作文件
