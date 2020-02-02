@@ -39,3 +39,4 @@ JavaScript study notes
     3. 删除DOM
  * 操作表单
  * 操作文件
+ * AJAX
