@@ -40,3 +40,4 @@ JavaScript study notes
  * 操作表单
  * 操作文件
  * AJAX
+ * Promise

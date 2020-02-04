@@ -223,6 +223,18 @@
         <p><button type="button" onclick="getPrice()">刷新</button></p>
     </div>
 
+    <div id="test-promise-log" style="border: solid 1px #ccc; padding: 1em; margin: 15px 0;">
+        <p>Log:</p>
+    </div>
+
+    <div id="test-promise2-log" style="border: solid 1px #ccc; padding: 1em; margin: 15px 0;">
+        <p>Log:</p>
+    </div>
+
+    <div id="test-promise-ajax-result" style="border: solid 1px #ccc; padding: 1em; margin: 15px 0;">
+        Result:
+    </div>
+
     <script>
         'use strict';
 
@@ -460,6 +472,7 @@
                 }
             } else {
                 // HTTP请求还在继续...
+                return fail(request.status);
             }
         };
 
@@ -488,6 +501,132 @@
         }
 
         // CORS
+
+        function callback() {
+            console.log('Done');
+        }
+        console.log('before setTimeout()');
+        setTimeout(callback, 1000);
+        console.log('after setTimeout()');
+
+        // 清除log:
+        let logging = document.getElementById('test-promise-log');
+        while (logging.children.length > 1) {
+            logging.removeChild(logging.children(logging.children.length - 1));
+        }
+        // 输出log到页面:
+        function log(s) {
+            let p = document.createElement('p');
+            p.innerHTML = s;
+            logging.appendChild(p);
+        }
+
+        new Promise(function (resolve, reject) {
+            log('start new Promise...');
+            let timeOut = Math.random() * 2;
+            log('set timeout to: ' + timeOut + ' seconds');
+            setTimeout(function () {
+                if (timeOut < 1) {
+                    log('call resolve()...');
+                    resolve('200 OK');
+                } else {
+                    log('call reject()...');
+                    reject('timeout in ' + timeOut + ' seconds.');
+                }
+            }, timeOut * 1000);
+        }).then(function (r) {
+            log('Done: ' + r);
+        }).catch(function (reason) {
+            log('Failed: ' + reason);
+        });
+
+        let logging1 = document.getElementById('test-promise2-log');
+        while (logging1.children.length > 1) {
+            logging1.removeChild(logging1.children[logging1.children.length - 1]);
+        }
+        
+        function log1(s) {
+            let p = document.createElement('p');
+            p.innerHTML = s;
+            logging1.appendChild(p);
+        }
+        // 0.5秒后返回input*input的计算结果:
+        function multiply(input) {
+            return new Promise(function (resolve, reject) {
+                log1('calculating ' + input + ' x' + input + '...');
+                setTimeout(resolve, 500, input * input);
+            });
+        }
+        // 0.5秒后返回input+input的计算结果:
+        function add(input) {
+            return new Promise(function (resolve, reject) {
+                log1('calculating ' + input + ' +' + input + '...');
+                setTimeout(resolve, 500, input + input);
+            });
+        }
+
+        let p = new Promise(function (resolve, reject) {
+            log1('start new Promise...');
+            resolve(123);
+        });
+
+        p.then(multiply)
+            .then(add)
+            .then(multiply)
+            .then(add)
+            .then(function (result) {
+                log1('Got value: ' + result);
+            });
+
+        // ajax函数将返回Promise对象:
+        function ajax(method, url, data) {
+            let request = new XMLHttpRequest();
+            return new Promise(function (resolve, reject) {
+                request.onreadystatechange = function () {
+                    if (request.readyState === 4) {
+                        if (request.status === 200) {
+                            resolve(request.responseText);
+                        } else {
+                            reject(request.status);
+                        }
+                    }
+                };
+                request.open(method, url);
+                request.send(data);
+            });
+        }
+
+        let logging2 = document.getElementById('test-promise-ajax-result');
+        let p2 = ajax('GET', '/api/categories');
+        p2.then(function (text) {
+            logging2.innerText = text;
+        }).catch(function (status) {
+            logging2.innerText = 'ERROR: ' + status;
+        });
+
+        // Promise.all
+        let p3 = new Promise(function (resolve, reject) {
+            setTimeout(resolve, 500, 'P3');
+        });
+        let p4 = new Promise(function (resolve, reject) {
+            setTimeout(resolve, 600, 'P4');
+        });
+        // 同时执行p1和p2，并在它们都完成后执行then:
+        Promise.all([p3, p4]).then(function (results) {
+            console.log(results);
+        });
+
+        // Promise.race
+        let p5 = new Promise(function (resolve, reject) {
+            setTimeout(resolve, 500, 'P5');
+        });
+        let p6 = new Promise(function (resolve, reject) {
+            setTimeout(resolve, 600, 'P6');
+        });
+        // 同时执行p1和p2，并在它们都完成后执行then:
+        Promise.race([p5, p6]).then(function (results) {
+            console.log(results);
+        });
     </script>
 </body>
 </html>
