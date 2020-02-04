@@ -42,3 +42,5 @@ JavaScript study notes
  * AJAX
  * Promise
 ### 7. jQuery
+ * 选择器
+

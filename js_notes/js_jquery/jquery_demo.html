@@ -9,6 +9,24 @@
     <meta charset="UTF-8">
     <title>jquery_demo</title>
     <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+</head>
+<body>
+    <div id="test-jquery">
+        <p id="para-1" class="color-red">JavaScript</p>
+        <p id="para-2" class="color-green">Haskell</p>
+        <p class="color-red color-green">Erlang</p>
+        <p name="name" class="color-black">Python</p>
+        <form action="#0" class="test-fom" target="_blank" onsubmit="return false;">
+            <legend>注册新用户</legend>
+            <fieldset>
+                <p><label>名字：<input name="name"></label></p>
+                <p><label>邮件：<input name="email"></label></p>
+                <p><label>口令：<input name="password" type="password"></label></p>
+                <p><button type="submit">注册</button></p>
+            </fieldset>
+        </form>
+    </div>
+
     <script>
         console.log('jQuery版本：' + $.fn.jquery);
 
@@ -17,13 +35,74 @@
         console.log(window.$);
         console.log($ === jQuery);
         console.log(typeof ($));
-        console.log($);
-        jQuery.noConflict();
-        console.log($);
-        console.log(jQuery);
-    </script>
-</head>
-<body>
+        // console.log($);
+        // jQuery.noConflict();
+        // console.log($);
+        // console.log(jQuery);
 
+        // 按ID查找
+        // 查找<div id="abc">:
+        let div = $('#abc');
+        console.log(div);
+        // jQuery对象
+        // let div = $('#abc');
+        // 假设存在div，获取第1个DOM元素
+        let divDom = div.get(0);
+        // 重新把DOM包装为jQuery对象
+        let another = $(divDom);
+        // 按tag查找
+        // 返回所有<p>节点
+        let ps = $('p');
+        console.log(ps.length);
+        // 按class查找
+        // 所有节点包含`class="red"`都将返回
+        // <div class="red">...</div>
+        // <p class="green red">...</p>
+        // let a = $('.red');
+        let a = $('.red.green');
+        // 符合条件的节点：
+        // <div class="red green">...</div>
+        // <div class="blue green red">...</div>
+
+        // 按属性查找
+        // 找出<??? name="email">
+        let email = $('[name=email]');
+        // 找出<??? type="password">
+        let passwordInput = $('[name=password]');
+        // 找出<??? items="A B">
+        // let a = $('[items="A B"]');
+        // 找出所有name属性值以icon开头的DOM
+        let icons = $('[name^=icon]');
+        // 找出所有name属性值以with结尾的DOM
+        let names = $('[name$=with]');
+        // 找出所有class包含至少一个以`icon-`开头的DOM
+        // let icons = $('[class^="icon-"]');
+
+        // 组合查找
+        // 不会找出<div name="email">
+        let emailInput = $('input[name=email]');
+        // 找出<tr class="red ...">...</tr>
+        let tr = $('tr.red');
+        // 多项选择器
+        // 把<p>和<div>都选出来
+        $('p.div');
+        // 把<p class="red">和<p class="green">都选出来
+        $('p.div,p.green');
+
+        let selected = null;
+        selected = $('#para-1');
+        selected = $('.color-red.color-green');
+        selected = $('.color-red');
+        selected = $('[class^=color-]');
+        selected = $('#test-jquery>p');
+        selected = $('input');
+        selected = $('input[name=name],input[name=email]');
+        // 高亮结果:
+        if (!(selected instanceof jQuery)) {
+            console.log('不是有效的jQuery对象!');
+        }
+        $('#test-jquery').find('*').css('background-color', '');
+        selected.css('background-color', '#ffd351');
+    </script>
 </body>
 </html>
