@@ -1,0 +1,29 @@
+<!--
+@author: magician
+@file:   jquery_demo.html
+@date:   2020/2/4
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery_demo</title>
+    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+        console.log('jQuery版本：' + $.fn.jquery);
+
+        // $符号
+        console.log(window.jQuery);
+        console.log(window.$);
+        console.log($ === jQuery);
+        console.log(typeof ($));
+        console.log($);
+        jQuery.noConflict();
+        console.log($);
+        console.log(jQuery);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

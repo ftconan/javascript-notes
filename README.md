@@ -41,3 +41,4 @@ JavaScript study notes
  * 操作文件
  * AJAX
  * Promise
+### 7. jQuery
