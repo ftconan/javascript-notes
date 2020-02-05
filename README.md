@@ -43,4 +43,5 @@ JavaScript study notes
  * Promise
 ### 7. jQuery
  * 选择器
+    1. 层级选择器
 

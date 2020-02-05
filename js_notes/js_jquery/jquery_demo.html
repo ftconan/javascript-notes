@@ -27,6 +27,40 @@
         </form>
     </div>
 
+    <div class="testing">
+        <ul class="lang">
+            <li class="lang-javascript">JavaScript</li>
+            <li class="lang-python">Python</li>
+            <li class="lang-lua">Lua</li>
+        </ul>
+    </div>
+
+    <div class="test-selector">
+        <ul class="test-lang">
+            <li class="lang-javascript">JavaScript</li>
+            <li class="lang-python">Python</li>
+            <li class="lang-lua">Lua</li>
+        </ul>
+        <ol class="test-lang">
+            <li class="lang-swift">Swift</li>
+            <li class="lang-java">Java</li>
+            <li class="lang-c">C</li>
+        </ol>
+    </div>
+
+    <div id="test-jquery1" class="test-selector">
+        <ul class="test-lang">
+            <li class="lang-javascript">JavaScript</li>
+            <li class="lang-python">Python</li>
+            <li class="lang-lua">Lua</li>
+        </ul>
+        <ol class="test-lang">
+            <li class="lang-swift">Swift</li>
+            <li class="lang-java">Java</li>
+            <li class="lang-c">C</li>
+        </ol>
+    </div>
+
     <script>
         console.log('jQuery版本：' + $.fn.jquery);
 
@@ -103,6 +137,56 @@
         }
         $('#test-jquery').find('*').css('background-color', '');
         selected.css('background-color', '#ffd351');
+
+        // 层级选择器（Descendant Selector）
+        console.log($('ul.lang li.lang-javascript'));
+        console.log($('div.testing li.lang-javascript'));
+        console.log('ul.lang li');
+        console.log($('form[name=upload] input'));
+        // 在form表单选择被<p>包含的<input>
+        console.log('form.test p input');
+
+        // 子选择器（Child Selector）
+        console.log('ul.lang>li.lang-javascript');
+        console.log('div.testing>li.lang-javascript');
+
+        // 过滤器（Filter）
+        console.log('ul.lang li');
+        console.log('ul.lang li:first-child');
+        console.log('ul.lang li:last-child');
+        console.log('ul.lang li:nth-child(2)');
+        console.log('ul.lang li:nth-child(even)');
+        console.log('ul.lang li:nth-child(odd)');
+
+        // 表单相关
+        // :input：可以选择<input>，<textarea>，<select>和<button>
+        // :file：可以选择<input type="file">，和input[type=file]一样
+        // :checkbox：可以选择复选框，和input[type=checkbox]一样
+        // :radio：可以选择单选框，和input[type=radio]一样
+        // :focus：可以选择当前输入焦点的元素，例如把光标放到一个<input>上，用$('input:focus')就可以选出
+        // :checked：选择当前勾上的单选框和复选框，用这个选择器可以立刻获得用户选择的项目，如$('input[type=radio]:checked')
+        // :enabled：可以选择可以正常输入的<input>、<select> 等，也就是没有灰掉的输入
+        // :disabled：和:enabled正好相反，选择那些不能输入的
+        // 所有可见的div
+        console.log($('div:visible'));
+        // 所有隐藏的div
+        console.log($('div:hidden'));
+
+        let selected1 = null;
+        // 分别选择所有语言，所有动态语言，所有静态语言，JavaScript，Lua，C等:
+        selected1 = $('div.test-selector li');
+        selected1 = $('ul.test-lang li');
+        selected1 = $('ol.test-lang li');
+        selected1 = $('.lang-javascript');
+        selected1 = $('.lang-lua');
+        selected1 = $('.lang-c');
+
+        // 高亮结果:
+        if (!(selected1 instanceof jQuery)) {
+            console.log('不是有效的jQuery对象!');
+        }
+        $('#test-jquery1').find('*').css('background-color', '');
+        selected1.css('background-color', '#ffd351');
     </script>
 </body>
 </html>
