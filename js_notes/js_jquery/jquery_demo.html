@@ -16,7 +16,7 @@
         <p id="para-2" class="color-green">Haskell</p>
         <p class="color-red color-green">Erlang</p>
         <p name="name" class="color-black">Python</p>
-        <form action="#0" class="test-fom" target="_blank" onsubmit="return false;">
+        <form action="#0" class="test-form" target="_blank" onsubmit="return false;">
             <legend>注册新用户</legend>
             <fieldset>
                 <p><label>名字：<input name="name"></label></p>
@@ -60,6 +60,32 @@
             <li class="lang-c">C</li>
         </ol>
     </div>
+
+    <ul class="lang">
+        <li class="js dy">JavaScript</li>
+        <li class="dy">Python</li>
+        <li id="swift">Swift</li>
+        <li class="dy">Scheme</li>
+        <li name="haskell">Haskell</li>
+    </ul>
+
+    <form action="#0" id="test-form" onsubmit="return false;">
+        <p><label>Name: <input type="text" name="name"></label></p>
+        <p><label>Email: <input type="text" name="email"></label></p>
+        <p><label>Password: <input type="password" name="password"></label></p>
+        <p>
+            Gender:
+            <label><input type="radio" name="gender" value="m" checked> Male</label>
+            <label><input type="radio" name="gender" value="f"> Female</label>
+        </p>
+        <p><label>City: <select name="city" id="city-list">
+            <option value="BJ" selected>Beijing</option>
+            <option value="SH">Shanghai</option>
+            <option value="CD">Chengdu</option>
+            <option value="XM">Xiamen</option>
+        </select></label></p>
+        <p><button type="submit">Submit</button></p>
+    </form>
 
     <script>
         console.log('jQuery版本：' + $.fn.jquery);
@@ -132,11 +158,11 @@
         selected = $('input');
         selected = $('input[name=name],input[name=email]');
         // 高亮结果:
-        if (!(selected instanceof jQuery)) {
-            console.log('不是有效的jQuery对象!');
-        }
-        $('#test-jquery').find('*').css('background-color', '');
-        selected.css('background-color', '#ffd351');
+        // if (!(selected instanceof jQuery)) {
+        //     console.log('不是有效的jQuery对象!');
+        // }
+        // $('#test-jquery').find('*').css('background-color', '');
+        // selected.css('background-color', '#ffd351');
 
         // 层级选择器（Descendant Selector）
         console.log($('ul.lang li.lang-javascript'));
@@ -187,6 +213,51 @@
         }
         $('#test-jquery1').find('*').css('background-color', '');
         selected1.css('background-color', '#ffd351');
+
+        let ul = $('ul.lang');
+        console.log(ul.find('.dy'));
+
+        let swf = ul.find('#swift');
+        console.log(swf.parent());
+        console.log(swf.parent('.red'));
+
+        let swift = $('#swift');
+        console.log(swift.next());
+        console.log(swift.next('[name=haskell]'));
+        console.log(swift.prev());
+        console.log(swift.prev('.dy'));
+
+        // 过滤
+        let langs = $('ul.lang li');
+
+        console.log(langs.filter('.dy'));
+        langs.filter(function () {
+            return this.innerHTML.indexOf('S') === 0;
+        });
+        let arr = langs.map(function () {
+            return this.innerHTML;
+        }).get();
+
+        console.log(arr);
+        console.log(langs.first());
+        console.log(langs.last());
+        console.log(langs.slice(2, 4));
+
+        let json = null;
+        json = {};
+
+        $('#test-form [name]').filter(function () {
+            if (this.name && this.name !== 'gender' || this.checked) {
+                json[this.name] = this.value;
+            }
+        });
+        json = JSON.stringify(json);
+        // 显示结果:
+        if (typeof (json) === 'string') {
+            console.log(json);
+        } else {
+            console.log('json变量不是string!');
+        }
     </script>
 </body>
 </html>

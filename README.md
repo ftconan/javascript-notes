@@ -44,4 +44,4 @@ JavaScript study notes
 ### 7. jQuery
  * 选择器
     1. 层级选择器
-
+    2. 查找和过滤
