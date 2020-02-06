@@ -93,14 +93,6 @@
         <p><button type="submit">Submit</button></p>
     </form>
 
-    <div id="test-div">
-        <ul>
-            <li><span>JavaScript</span></li>
-            <li><span>Python</span></li>
-            <li><span>Swift</span></li>
-        </ul>
-    </div>
-
     <ul id="test-ul">
         <li class="js">JavaScript</li>
         <li name="book">Java &amp; JavaScript</li>
@@ -132,6 +124,22 @@
         <option value="SZ">Shenzhen</option>
     </select>
     <label for="test-textarea"></label><textarea id="test-textarea" cols="30" rows="10"></textarea>
+
+    <div id="test-div">
+        <ul>
+            <li><span>JavaScript</span></li>
+            <li><span>Python</span></li>
+            <li><span>Swift</span></li>
+        </ul>
+    </div>
+
+    <div id="test-div1">
+        <ul>
+            <li><span>JavaScript</span></li>
+            <li><span>Python</span></li>
+            <li><span>Swift</span></li>
+        </ul>
+    </div>
 
     <script>
         'use strict';
@@ -393,7 +401,41 @@
         js.after('<li><span>Lua</span></li>');
 
         // 删除节点
+        let li = $('#test-div>ul>li');
+        li.remove();
+        //
+        // let ul2 = $('#test-div1>ul');
+        // let arr1 = [];
+        // arr1.push('Pascal','Lua','Ruby');
+        // let li1 = ul2.find('li');
+        //
+        // console.log(typeof li1, li1);
+        // for (let i=0; i<li1.length; i++) {
+        //
+        //     arr1.push(li1.i.text());
+        // }
+        // arr1.sort();
+        // console.log(arr1);
+        //
+        // for (let i=0; i<arr1.length; i++) {
+        //     ul2.append('<li><span>' + arr1[i] +'</span></li>');
+        // }
+        let ul2 = $('#test-div1>ul');
+        let listHere = [];
+        listHere.push('Pascal','Lua','Ruby');
+        let li1 = ul2.find('li');
 
+        li1.map(function(){
+                listHere.push($(this).text());
+            }
+        );
+
+        listHere.sort();
+        li1.remove();
+
+        listHere.map(function(x){
+            ul2.append('<li><span>' + x +'</span></li>');
+        });
     </script>
 </body>
 </html>
