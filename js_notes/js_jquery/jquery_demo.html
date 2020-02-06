@@ -9,6 +9,12 @@
     <meta charset="UTF-8">
     <title>jquery_demo</title>
     <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <style>
+        .highlight {
+            color: #dd1144;
+            background-color: #ffd351;
+        }
+    </style>
 </head>
 <body>
     <div id="test-jquery">
@@ -87,7 +93,49 @@
         <p><button type="submit">Submit</button></p>
     </form>
 
+    <div id="test-div">
+        <ul>
+            <li><span>JavaScript</span></li>
+            <li><span>Python</span></li>
+            <li><span>Swift</span></li>
+        </ul>
+    </div>
+
+    <ul id="test-ul">
+        <li class="js">JavaScript</li>
+        <li name="book">Java &amp; JavaScript</li>
+    </ul>
+
+    <ul id="test-css">
+        <li class="lang dy"><span>JavaScript</span></li>
+        <li class="lang"><span>Java</span></li>
+        <li class="lang dy"><span>Python</span></li>
+        <li class="lang"><span>Swift</span></li>
+        <li class="lang dy"><span>Scheme</span></li>
+    </ul>
+
+    <div id="test-highlight-css">
+        <ul>
+            <li class="py"><span>Python</span></li>
+            <li class="js"><span>JavaScript</span></li>
+            <li class="sw"><span>Swift</span></li>
+            <li class="hk"><span>Haskell</span></li>
+        </ul>
+    </div>
+
+    <label for="test-radio"></label><input type="text" id="test-radio" name="test" checked value="1">
+
+    <label for="test-input"></label><input type="text" id="test-input" name="email" value="">
+    <label for="test-select"></label><select name="city" id="test-select">
+        <option value="BJ">Beijing</option>
+        <option value="SH">Shanghai</option>
+        <option value="SZ">Shenzhen</option>
+    </select>
+    <label for="test-textarea"></label><textarea id="test-textarea" cols="30" rows="10"></textarea>
+
     <script>
+        'use strict';
+
         console.log('jQuery版本：' + $.fn.jquery);
 
         // $符号
@@ -258,6 +306,94 @@
         } else {
             console.log('json变量不是string!');
         }
+
+        // 修改Text和HTML
+        console.log($('#test-ul li[name=book]').text());
+        console.log($('#test-ul li[name=book]').html());
+
+        let j1 = $('#test-ul li.js');
+        let j2 = $('#test-ul li[name=book]');
+        j1.html('<span style="color: red;">JavaScript</span>');
+        j2.text('JavaScript &ECMAScript');
+
+        // 如果不存在id为not-exist的节点：
+        $('#not-exist').text('Hello');
+
+        // 修改CSS
+        $('#test-css li.dy>span').css('background-color', '#ffd351').css('color', 'red');
+
+        let div1 = $('#test-div');
+        div1.hasClass('highlight');
+        div1.addClass('highlight');
+        div1.removeClass('highlight');
+
+        let div2 = $('#test-highlight-css');
+        div2.find('.js>span').css('color', '#dd1144').css('background-color', '#ffd351');
+        div2.find('.js>span').addClass('highlight');
+
+        // 显示和隐藏DOM
+        let a1 = $('a[target=_blank]');
+        a1.hide();
+        a1.show();
+
+        // 获取DOM信息
+        // 浏览器可视窗口大小:
+        console.log($(window).width());
+        console.log($(window).height());
+        // HTML文档大小:
+        console.log($(document).width());
+        console.log($(document).height());
+        // 某个div的大小:
+        let div3 = $('#test-div');
+        console.log(div3.width());
+        console.log(div3.height());
+        console.log(div3.width(400));
+        console.log(div3.height('200px'));
+
+        // <div id="test-div" name="Test" start="1">...</div>
+        console.log(div3.attr('data'));
+        console.log(div3.attr('name'));
+        console.log(div3.attr('name', 'Hello'));
+        console.log(div3.removeAttr('data'));
+        console.log(div3.attr('name'));
+
+        let radio = $('#test-radio');
+        console.log(radio.attr('checked'));
+        console.log(radio.prop('checked'));
+        console.log(radio.is(':checked'));
+
+        // 操作表单
+        let
+            input = $('#test-input'),
+            select = $('#test-select'),
+            textarea = $('test-textarea');
+        console.log(input.val());
+        console.log(input.val('abc@example.com'));
+        console.log(select.val());
+        console.log(select.val('SH'));
+        console.log(textarea.val());
+        console.log(textarea.val('Hi'));
+
+        let ul1 = $('#test-div>ul');
+        ul1.append('<li><span>Haskell</span></li>');
+
+        // 创建DOM对象:
+        let ps1 = document.createElement('li');
+        ps1.innerHTML = '<span>Pascal</span>';
+        // 添加DOM对象:
+        ul1.append(ps1);
+        // 添加jQuery对象:
+        ul1.append($('#scheme'));
+        // 添加函数对象:
+        ul1.append(function (index, html) {
+            return '<li><span>Language - ' + index + '</span></li>';
+        });
+
+        let js = $('#test-div>ul>li:first-child');
+        js.after('<li><span>Lua</span></li>');
+
+        // 删除节点
+
     </script>
 </body>
 </html>
