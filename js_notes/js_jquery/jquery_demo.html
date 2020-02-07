@@ -8,13 +8,417 @@
 <head>
     <meta charset="UTF-8">
     <title>jquery_demo</title>
-    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
     <style>
         .highlight {
             color: #dd1144;
             background-color: #ffd351;
         }
     </style>
+
+    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+        $(function () {
+            'use strict';
+
+            console.log('jQuery版本：' + $.fn.jquery);
+
+            // $符号
+            console.log(window.jQuery);
+            console.log(window.$);
+            console.log($ === jQuery);
+            console.log(typeof ($));
+            // console.log($);
+            // jQuery.noConflict();
+            // console.log($);
+            // console.log(jQuery);
+
+            // 按ID查找
+            // 查找<div id="abc">:
+            let div = $('#abc');
+            console.log(div);
+            // jQuery对象
+            // let div = $('#abc');
+            // 假设存在div，获取第1个DOM元素
+            let divDom = div.get(0);
+            // 重新把DOM包装为jQuery对象
+            let another = $(divDom);
+            // 按tag查找
+            // 返回所有<p>节点
+            let ps = $('p');
+            console.log(ps.length);
+            // 按class查找
+            // 所有节点包含`class="red"`都将返回
+            // <div class="red">...</div>
+            // <p class="green red">...</p>
+            // let a = $('.red');
+            let a = $('.red.green');
+            // 符合条件的节点：
+            // <div class="red green">...</div>
+            // <div class="blue green red">...</div>
+
+            // 按属性查找
+            // 找出<??? name="email">
+            let email = $('[name=email]');
+            // 找出<??? type="password">
+            let passwordInput = $('[name=password]');
+            // 找出<??? items="A B">
+            // let a = $('[items="A B"]');
+            // 找出所有name属性值以icon开头的DOM
+            let icons = $('[name^=icon]');
+            // 找出所有name属性值以with结尾的DOM
+            let names = $('[name$=with]');
+            // 找出所有class包含至少一个以`icon-`开头的DOM
+            // let icons = $('[class^="icon-"]');
+
+            // 组合查找
+            // 不会找出<div name="email">
+            let emailInput = $('input[name=email]');
+            // 找出<tr class="red ...">...</tr>
+            let tr = $('tr.red');
+            // 多项选择器
+            // 把<p>和<div>都选出来
+            $('p.div');
+            // 把<p class="red">和<p class="green">都选出来
+            $('p.div,p.green');
+
+            let selected = null;
+            selected = $('#para-1');
+            selected = $('.color-red.color-green');
+            selected = $('.color-red');
+            selected = $('[class^=color-]');
+            selected = $('#test-jquery>p');
+            selected = $('input');
+            selected = $('input[name=name],input[name=email]');
+            // 高亮结果:
+            // if (!(selected instanceof jQuery)) {
+            //     console.log('不是有效的jQuery对象!');
+            // }
+            // $('#test-jquery').find('*').css('background-color', '');
+            // selected.css('background-color', '#ffd351');
+
+            // 层级选择器（Descendant Selector）
+            console.log($('ul.lang li.lang-javascript'));
+            console.log($('div.testing li.lang-javascript'));
+            console.log('ul.lang li');
+            console.log($('form[name=upload] input'));
+            // 在form表单选择被<p>包含的<input>
+            console.log('form.test p input');
+
+            // 子选择器（Child Selector）
+            console.log('ul.lang>li.lang-javascript');
+            console.log('div.testing>li.lang-javascript');
+
+            // 过滤器（Filter）
+            console.log('ul.lang li');
+            console.log('ul.lang li:first-child');
+            console.log('ul.lang li:last-child');
+            console.log('ul.lang li:nth-child(2)');
+            console.log('ul.lang li:nth-child(even)');
+            console.log('ul.lang li:nth-child(odd)');
+
+            // 表单相关
+            // :input：可以选择<input>，<textarea>，<select>和<button>
+            // :file：可以选择<input type="file">，和input[type=file]一样
+            // :checkbox：可以选择复选框，和input[type=checkbox]一样
+            // :radio：可以选择单选框，和input[type=radio]一样
+            // :focus：可以选择当前输入焦点的元素，例如把光标放到一个<input>上，用$('input:focus')就可以选出
+            // :checked：选择当前勾上的单选框和复选框，用这个选择器可以立刻获得用户选择的项目，如$('input[type=radio]:checked')
+            // :enabled：可以选择可以正常输入的<input>、<select> 等，也就是没有灰掉的输入
+            // :disabled：和:enabled正好相反，选择那些不能输入的
+            // 所有可见的div
+            console.log($('div:visible'));
+            // 所有隐藏的div
+            console.log($('div:hidden'));
+
+            let selected1 = null;
+            // 分别选择所有语言，所有动态语言，所有静态语言，JavaScript，Lua，C等:
+            selected1 = $('div.test-selector li');
+            selected1 = $('ul.test-lang li');
+            selected1 = $('ol.test-lang li');
+            selected1 = $('.lang-javascript');
+            selected1 = $('.lang-lua');
+            selected1 = $('.lang-c');
+
+            // 高亮结果:
+            if (!(selected1 instanceof jQuery)) {
+                console.log('不是有效的jQuery对象!');
+            }
+            $('#test-jquery1').find('*').css('background-color', '');
+            selected1.css('background-color', '#ffd351');
+
+            let ul = $('ul.lang');
+            console.log(ul.find('.dy'));
+
+            let swf = ul.find('#swift');
+            console.log(swf.parent());
+            console.log(swf.parent('.red'));
+
+            let swift = $('#swift');
+            console.log(swift.next());
+            console.log(swift.next('[name=haskell]'));
+            console.log(swift.prev());
+            console.log(swift.prev('.dy'));
+
+            // 过滤
+            let langs = $('ul.lang li');
+
+            console.log(langs.filter('.dy'));
+            langs.filter(function () {
+                return this.innerHTML.indexOf('S') === 0;
+            });
+            let arr = langs.map(function () {
+                return this.innerHTML;
+            }).get();
+
+            console.log(arr);
+            console.log(langs.first());
+            console.log(langs.last());
+            console.log(langs.slice(2, 4));
+
+            let json = null;
+            json = {};
+
+            $('#test-form [name]').filter(function () {
+                if (this.name && this.name !== 'gender' || this.checked) {
+                    json[this.name] = this.value;
+                }
+            });
+            json = JSON.stringify(json);
+            // 显示结果:
+            if (typeof (json) === 'string') {
+                console.log(json);
+            } else {
+                console.log('json变量不是string!');
+            }
+
+            // 修改Text和HTML
+            console.log($('#test-ul li[name=book]').text());
+            console.log($('#test-ul li[name=book]').html());
+
+            let j1 = $('#test-ul li.js');
+            let j2 = $('#test-ul li[name=book]');
+            j1.html('<span style="color: red;">JavaScript</span>');
+            j2.text('JavaScript &ECMAScript');
+
+            // 如果不存在id为not-exist的节点：
+            $('#not-exist').text('Hello');
+
+            // 修改CSS
+            $('#test-css li.dy>span').css('background-color', '#ffd351').css('color', 'red');
+
+            let div1 = $('#test-div');
+            div1.hasClass('highlight');
+            div1.addClass('highlight');
+            div1.removeClass('highlight');
+
+            let div2 = $('#test-highlight-css');
+            div2.find('.js>span').css('color', '#dd1144').css('background-color', '#ffd351');
+            div2.find('.js>span').addClass('highlight');
+
+            // 显示和隐藏DOM
+            let a1 = $('a[target=_blank]');
+            a1.hide();
+            a1.show();
+
+            // 获取DOM信息
+            // 浏览器可视窗口大小:
+            console.log($(window).width());
+            console.log($(window).height());
+            // HTML文档大小:
+            console.log($(document).width());
+            console.log($(document).height());
+            // 某个div的大小:
+            let div3 = $('#test-div');
+            console.log(div3.width());
+            console.log(div3.height());
+            console.log(div3.width(400));
+            console.log(div3.height('200px'));
+
+            // <div id="test-div" name="Test" start="1">...</div>
+            console.log(div3.attr('data'));
+            console.log(div3.attr('name'));
+            console.log(div3.attr('name', 'Hello'));
+            console.log(div3.removeAttr('data'));
+            console.log(div3.attr('name'));
+
+            let radio = $('#test-radio');
+            console.log(radio.attr('checked'));
+            console.log(radio.prop('checked'));
+            console.log(radio.is(':checked'));
+
+            // 操作表单
+            let
+                input = $('#test-input'),
+                select = $('#test-select'),
+                textarea = $('test-textarea');
+            console.log(input.val());
+            console.log(input.val('abc@example.com'));
+            console.log(select.val());
+            console.log(select.val('SH'));
+            console.log(textarea.val());
+            console.log(textarea.val('Hi'));
+
+            let ul1 = $('#test-div>ul');
+            ul1.append('<li><span>Haskell</span></li>');
+
+            // 创建DOM对象:
+            let ps1 = document.createElement('li');
+            ps1.innerHTML = '<span>Pascal</span>';
+            // 添加DOM对象:
+            ul1.append(ps1);
+            // 添加jQuery对象:
+            ul1.append($('#scheme'));
+            // 添加函数对象:
+            ul1.append(function (index, html) {
+                return '<li><span>Language - ' + index + '</span></li>';
+            });
+
+            let js = $('#test-div>ul>li:first-child');
+            js.after('<li><span>Lua</span></li>');
+
+            // 删除节点
+            let li = $('#test-div>ul>li');
+            li.remove();
+            //
+            // let ul2 = $('#test-div1>ul');
+            // let arr1 = [];
+            // arr1.push('Pascal','Lua','Ruby');
+            // let li1 = ul2.find('li');
+            //
+            // console.log(typeof li1, li1);
+            // for (let i=0; i<li1.length; i++) {
+            //
+            //     arr1.push(li1.i.text());
+            // }
+            // arr1.sort();
+            // console.log(arr1);
+            //
+            // for (let i=0; i<arr1.length; i++) {
+            //     ul2.append('<li><span>' + arr1[i] +'</span></li>');
+            // }
+            let ul2 = $('#test-div1>ul');
+            let listHere = [];
+            listHere.push('Pascal','Lua','Ruby');
+            let li1 = ul2.find('li');
+
+            li1.map(function(){
+                    listHere.push($(this).text());
+                }
+            );
+
+            listHere.sort();
+            li1.remove();
+
+            listHere.map(function(x){
+                ul2.append('<li><span>' + x +'</span></li>');
+            });
+
+            // 获取超链接的jQuery对象:
+            let a2 = $('#test-link');
+            a2.click(function () {
+                alert('Hello!');
+            });
+
+            // 事件参数
+            $('#testMouseMoveDiv').mousemove(function (e) {
+                $('#testMouseMoveSpan').text('pageX = ' + e.pageX +' , pageY = ' + e.pageY);
+            });
+
+            // 取消绑定
+            // function hello() {
+            //     alert('hello!');
+            // }
+            //
+            // setTimeout(function () {
+            //     a2.off('click', hello);
+            // }, 10000);
+
+            // 事件触发条件
+            // let input1 = $('#test-input');
+            // input1.change(function () {
+            //     console.log('changed...');
+            // });
+
+            // 浏览器安全限制
+            let button1 = $('#testPopupButton1');
+            let button2 = $('#testPopupButton2');
+            
+            function popupTestWindow() {
+                window.open('/');
+            }
+
+            button1.click(function () {
+                popupTestWindow();
+            });
+
+            button2.click(function () {
+                setTimeout(popupTestWindow, 100);
+            });
+
+            let
+                form = $('#test-form'),
+                langs1 = form.find('[name=lang]'),
+                selectAll = form.find('label.selectAll :checkbox'),
+                selectAllLabel = form.find('label.selectAll span.selectAll'),
+                deselectAllLabel = form.find('label.selectAll span.deselectAll'),
+                invertSelect = form.find('a.invertSelect');
+
+            // 重置初始化状态:
+            form.find('*').show().off();
+            form.find(':checkbox').prop('checked', false).off();
+            deselectAllLabel.hide();
+            // 拦截form提交事件:
+            form.off().submit(function (e) {
+                e.preventDefault();
+                alert(form.serialize());
+            });
+
+            function selectAllFunc() {
+                langs1.map(function () {
+                    $(this).prop('checked', true);
+                });
+            }
+
+            function deselectAllFunc() {
+                langs1.map(function () {
+                    $(this).prop('checked', false);
+                });
+            }
+
+            selectAll.click(function () {
+                if (selectAll.prop('checked')) {
+                    selectAllFunc();
+                    selectAllLabel.hide();
+                    deselectAllLabel.show();
+                } else {
+                    deselectAllFunc();
+                    deselectAllLabel.hide();
+                    selectAllLabel.show();
+                }
+            });
+
+            invertSelect.click(function () {
+                langs.map(function () {
+                    let status = $(this).prop('checked');
+                    $(this).prop('checked', !status);
+                });
+            });
+
+            form.find('label :checkbox').click(function () {
+                let statusArr = [];
+                langs1.map(function () {
+                    statusArr.push($(this).prop('checked'));
+                    if (statusArr.indexOf(false) === -1) {
+                        selectAllLabel.hide();
+                        deselectAllLabel.show();
+                    } else {
+                        deselectAllLabel.hide();
+                        selectAllLabel.show();
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 <body>
     <div id="test-jquery">
@@ -141,301 +545,35 @@
         </ul>
     </div>
 
-    <script>
-        'use strict';
+    <a href="#0" id="test-link">点我试试</a>
 
-        console.log('jQuery版本：' + $.fn.jquery);
+    <p>mousemove: <span id="testMouseMoveSpan">pageX = 382, pageY = 2897</span></p>
+    <div id="testMouseMoveDiv" style="display: block; width: 300px; height: 120px; border: 1px solid #ccc;">
+        在此区域移动鼠标试试
+    </div>
 
-        // $符号
-        console.log(window.jQuery);
-        console.log(window.$);
-        console.log($ === jQuery);
-        console.log(typeof ($));
-        // console.log($);
-        // jQuery.noConflict();
-        // console.log($);
-        // console.log(jQuery);
+    <p>
+        <button id="testPopupButton1" type="button" class="uk-button">Button 1</button>&nbsp;&nbsp;&nbsp;
+        <button id="testPopupButton2" type="button" class="uk-button">Button 2</button>
+    </p>
 
-        // 按ID查找
-        // 查找<div id="abc">:
-        let div = $('#abc');
-        console.log(div);
-        // jQuery对象
-        // let div = $('#abc');
-        // 假设存在div，获取第1个DOM元素
-        let divDom = div.get(0);
-        // 重新把DOM包装为jQuery对象
-        let another = $(divDom);
-        // 按tag查找
-        // 返回所有<p>节点
-        let ps = $('p');
-        console.log(ps.length);
-        // 按class查找
-        // 所有节点包含`class="red"`都将返回
-        // <div class="red">...</div>
-        // <p class="green red">...</p>
-        // let a = $('.red');
-        let a = $('.red.green');
-        // 符合条件的节点：
-        // <div class="red green">...</div>
-        // <div class="blue green red">...</div>
-
-        // 按属性查找
-        // 找出<??? name="email">
-        let email = $('[name=email]');
-        // 找出<??? type="password">
-        let passwordInput = $('[name=password]');
-        // 找出<??? items="A B">
-        // let a = $('[items="A B"]');
-        // 找出所有name属性值以icon开头的DOM
-        let icons = $('[name^=icon]');
-        // 找出所有name属性值以with结尾的DOM
-        let names = $('[name$=with]');
-        // 找出所有class包含至少一个以`icon-`开头的DOM
-        // let icons = $('[class^="icon-"]');
-
-        // 组合查找
-        // 不会找出<div name="email">
-        let emailInput = $('input[name=email]');
-        // 找出<tr class="red ...">...</tr>
-        let tr = $('tr.red');
-        // 多项选择器
-        // 把<p>和<div>都选出来
-        $('p.div');
-        // 把<p class="red">和<p class="green">都选出来
-        $('p.div,p.green');
-
-        let selected = null;
-        selected = $('#para-1');
-        selected = $('.color-red.color-green');
-        selected = $('.color-red');
-        selected = $('[class^=color-]');
-        selected = $('#test-jquery>p');
-        selected = $('input');
-        selected = $('input[name=name],input[name=email]');
-        // 高亮结果:
-        // if (!(selected instanceof jQuery)) {
-        //     console.log('不是有效的jQuery对象!');
-        // }
-        // $('#test-jquery').find('*').css('background-color', '');
-        // selected.css('background-color', '#ffd351');
-
-        // 层级选择器（Descendant Selector）
-        console.log($('ul.lang li.lang-javascript'));
-        console.log($('div.testing li.lang-javascript'));
-        console.log('ul.lang li');
-        console.log($('form[name=upload] input'));
-        // 在form表单选择被<p>包含的<input>
-        console.log('form.test p input');
-
-        // 子选择器（Child Selector）
-        console.log('ul.lang>li.lang-javascript');
-        console.log('div.testing>li.lang-javascript');
-
-        // 过滤器（Filter）
-        console.log('ul.lang li');
-        console.log('ul.lang li:first-child');
-        console.log('ul.lang li:last-child');
-        console.log('ul.lang li:nth-child(2)');
-        console.log('ul.lang li:nth-child(even)');
-        console.log('ul.lang li:nth-child(odd)');
-
-        // 表单相关
-        // :input：可以选择<input>，<textarea>，<select>和<button>
-        // :file：可以选择<input type="file">，和input[type=file]一样
-        // :checkbox：可以选择复选框，和input[type=checkbox]一样
-        // :radio：可以选择单选框，和input[type=radio]一样
-        // :focus：可以选择当前输入焦点的元素，例如把光标放到一个<input>上，用$('input:focus')就可以选出
-        // :checked：选择当前勾上的单选框和复选框，用这个选择器可以立刻获得用户选择的项目，如$('input[type=radio]:checked')
-        // :enabled：可以选择可以正常输入的<input>、<select> 等，也就是没有灰掉的输入
-        // :disabled：和:enabled正好相反，选择那些不能输入的
-        // 所有可见的div
-        console.log($('div:visible'));
-        // 所有隐藏的div
-        console.log($('div:hidden'));
-
-        let selected1 = null;
-        // 分别选择所有语言，所有动态语言，所有静态语言，JavaScript，Lua，C等:
-        selected1 = $('div.test-selector li');
-        selected1 = $('ul.test-lang li');
-        selected1 = $('ol.test-lang li');
-        selected1 = $('.lang-javascript');
-        selected1 = $('.lang-lua');
-        selected1 = $('.lang-c');
-
-        // 高亮结果:
-        if (!(selected1 instanceof jQuery)) {
-            console.log('不是有效的jQuery对象!');
-        }
-        $('#test-jquery1').find('*').css('background-color', '');
-        selected1.css('background-color', '#ffd351');
-
-        let ul = $('ul.lang');
-        console.log(ul.find('.dy'));
-
-        let swf = ul.find('#swift');
-        console.log(swf.parent());
-        console.log(swf.parent('.red'));
-
-        let swift = $('#swift');
-        console.log(swift.next());
-        console.log(swift.next('[name=haskell]'));
-        console.log(swift.prev());
-        console.log(swift.prev('.dy'));
-
-        // 过滤
-        let langs = $('ul.lang li');
-
-        console.log(langs.filter('.dy'));
-        langs.filter(function () {
-            return this.innerHTML.indexOf('S') === 0;
-        });
-        let arr = langs.map(function () {
-            return this.innerHTML;
-        }).get();
-
-        console.log(arr);
-        console.log(langs.first());
-        console.log(langs.last());
-        console.log(langs.slice(2, 4));
-
-        let json = null;
-        json = {};
-
-        $('#test-form [name]').filter(function () {
-            if (this.name && this.name !== 'gender' || this.checked) {
-                json[this.name] = this.value;
-            }
-        });
-        json = JSON.stringify(json);
-        // 显示结果:
-        if (typeof (json) === 'string') {
-            console.log(json);
-        } else {
-            console.log('json变量不是string!');
-        }
-
-        // 修改Text和HTML
-        console.log($('#test-ul li[name=book]').text());
-        console.log($('#test-ul li[name=book]').html());
-
-        let j1 = $('#test-ul li.js');
-        let j2 = $('#test-ul li[name=book]');
-        j1.html('<span style="color: red;">JavaScript</span>');
-        j2.text('JavaScript &ECMAScript');
-
-        // 如果不存在id为not-exist的节点：
-        $('#not-exist').text('Hello');
-
-        // 修改CSS
-        $('#test-css li.dy>span').css('background-color', '#ffd351').css('color', 'red');
-
-        let div1 = $('#test-div');
-        div1.hasClass('highlight');
-        div1.addClass('highlight');
-        div1.removeClass('highlight');
-
-        let div2 = $('#test-highlight-css');
-        div2.find('.js>span').css('color', '#dd1144').css('background-color', '#ffd351');
-        div2.find('.js>span').addClass('highlight');
-
-        // 显示和隐藏DOM
-        let a1 = $('a[target=_blank]');
-        a1.hide();
-        a1.show();
-
-        // 获取DOM信息
-        // 浏览器可视窗口大小:
-        console.log($(window).width());
-        console.log($(window).height());
-        // HTML文档大小:
-        console.log($(document).width());
-        console.log($(document).height());
-        // 某个div的大小:
-        let div3 = $('#test-div');
-        console.log(div3.width());
-        console.log(div3.height());
-        console.log(div3.width(400));
-        console.log(div3.height('200px'));
-
-        // <div id="test-div" name="Test" start="1">...</div>
-        console.log(div3.attr('data'));
-        console.log(div3.attr('name'));
-        console.log(div3.attr('name', 'Hello'));
-        console.log(div3.removeAttr('data'));
-        console.log(div3.attr('name'));
-
-        let radio = $('#test-radio');
-        console.log(radio.attr('checked'));
-        console.log(radio.prop('checked'));
-        console.log(radio.is(':checked'));
-
-        // 操作表单
-        let
-            input = $('#test-input'),
-            select = $('#test-select'),
-            textarea = $('test-textarea');
-        console.log(input.val());
-        console.log(input.val('abc@example.com'));
-        console.log(select.val());
-        console.log(select.val('SH'));
-        console.log(textarea.val());
-        console.log(textarea.val('Hi'));
-
-        let ul1 = $('#test-div>ul');
-        ul1.append('<li><span>Haskell</span></li>');
-
-        // 创建DOM对象:
-        let ps1 = document.createElement('li');
-        ps1.innerHTML = '<span>Pascal</span>';
-        // 添加DOM对象:
-        ul1.append(ps1);
-        // 添加jQuery对象:
-        ul1.append($('#scheme'));
-        // 添加函数对象:
-        ul1.append(function (index, html) {
-            return '<li><span>Language - ' + index + '</span></li>';
-        });
-
-        let js = $('#test-div>ul>li:first-child');
-        js.after('<li><span>Lua</span></li>');
-
-        // 删除节点
-        let li = $('#test-div>ul>li');
-        li.remove();
-        //
-        // let ul2 = $('#test-div1>ul');
-        // let arr1 = [];
-        // arr1.push('Pascal','Lua','Ruby');
-        // let li1 = ul2.find('li');
-        //
-        // console.log(typeof li1, li1);
-        // for (let i=0; i<li1.length; i++) {
-        //
-        //     arr1.push(li1.i.text());
-        // }
-        // arr1.sort();
-        // console.log(arr1);
-        //
-        // for (let i=0; i<arr1.length; i++) {
-        //     ul2.append('<li><span>' + arr1[i] +'</span></li>');
-        // }
-        let ul2 = $('#test-div1>ul');
-        let listHere = [];
-        listHere.push('Pascal','Lua','Ruby');
-        let li1 = ul2.find('li');
-
-        li1.map(function(){
-                listHere.push($(this).text());
-            }
-        );
-
-        listHere.sort();
-        li1.remove();
-
-        listHere.map(function(x){
-            ul2.append('<li><span>' + x +'</span></li>');
-        });
-    </script>
+    <form action="test" id="test-form1">
+        <legend>请选择想要学习的编程语言：</legend>
+        <fieldset>
+            <p>
+                <label class="selectAll">
+                    <input type="checkbox"><span class="selectAll">全选</span>
+                    <span class="deselectAll">全不选</span>
+                    <a href="#0" class="invertSelect">反选</a>
+                </label>
+            </p>
+            <p><label><input type="checkbox" name="lang" value="javascript">JavaScript</label></p>
+            <p><label><input type="checkbox" name="lang" value="python">Python</label></p>
+            <p><label><input type="checkbox" name="lang" value="ruby">Ruby</label></p>
+            <p><label><input type="checkbox" name="lang" value="haskell">Haskell</label></p>
+            <p><label><input type="checkbox" name="lang" value="scheme">Scheme</label></p>
+            <p><button type="submit">Submit</button></p>
+        </fieldset>
+    </form>
 </body>
 </html>
