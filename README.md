@@ -48,3 +48,4 @@ JavaScript study notes
  * 操作DOM
     1. 修改DOM结构
  * 事件
+ * 动画

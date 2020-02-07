@@ -17,7 +17,42 @@
 
     <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
     <script>
-        $(function () {
+        function customAnimate() {
+                let div = $('#test-animate');
+
+                div.animate({
+                    opacity: 0.25,
+                    width: '256px',
+                    height: '256px'
+                }, 3000, function () {
+                    console.log('动画已结束');
+                    $(this).css('opacity', '1.0').css('width', '128px').css('height', '128px');
+                });
+        }
+
+        function animates() {
+            let div = $('test-animates');
+            div.slideDown(2000)
+                // .delay(1000)
+                .animate({
+                    width: '256px',
+                    height: '256px'
+                }, 2000)
+                // .delay(1000)
+                .animate({
+                    width: '128px',
+                    height: '128px'
+                }, 2000);
+        }
+
+        function deleteFirstTR() {
+            var tr = $('#test-table>tbody>tr:visible').first();
+            tr.fadeOut(600, function() {
+                tr.remove();
+            });
+        }
+
+            $(function () {
             'use strict';
 
             console.log('jQuery版本：' + $.fn.jquery);
@@ -356,7 +391,7 @@
             });
 
             let
-                form = $('#test-form'),
+                form = $('#test-form1'),
                 langs1 = form.find('[name=lang]'),
                 selectAll = form.find('label.selectAll :checkbox'),
                 selectAllLabel = form.find('label.selectAll span.selectAll'),
@@ -398,7 +433,7 @@
             });
 
             invertSelect.click(function () {
-                langs.map(function () {
+                langs1.map(function () {
                     let status = $(this).prop('checked');
                     $(this).prop('checked', !status);
                 });
@@ -417,6 +452,8 @@
                     }
                 });
             });
+
+            deleteFirstTR();
         });
     </script>
 </head>
@@ -575,5 +612,100 @@
             <p><button type="submit">Submit</button></p>
         </fieldset>
     </form>
+
+    <div style="border: 1px solid #ccc; padding: 10px; margin: 10px 0">
+        <div style="padding: 10px 0">
+            <button class="uk-button" onclick="$('#test-show-hide').hide('slow');">hide('slow')</button>
+            <button class="uk-button" onclick="$('#test-show-hide').show('slow');">show('slow')</button>
+            <button class="uk-button" onclick="$('#test-show-hide').toggle('slow');">toggle('slow')</button>
+        </div>
+        <div style="height: 128px;">
+            <div id="test-show-hide" style="width: 128px; height: 128px; background-color: rgb(204, 204, 204);
+            background-image: url(&quot;/static/img/404.png&quot;); display: block;"></div>
+        </div>
+    </div>
+
+    <div style="border: 1px solid #ccc; padding: 10px; margin: 10px 0">
+        <div style="padding: 10px 0">
+            <button class="uk-button" onclick="$('#test-slide').slideUp('slow');">slideUp('slow')</button>
+            <button class="uk-button" onclick="$('#test-slide').slideDown('slow');">slideDown('slow')</button>
+            <button class="uk-button" onclick="$('#test-slide').slideToggle('slow');">slideToggle('slow')</button>
+        </div>
+        <div style="height: 128px;">
+            <div id="test-slide" style="width: 128px; height: 128px; background-color: rgb(204, 204, 204); background-image: url(&quot;/static/img/404.png&quot;); display: block;"></div>
+        </div>
+    </div>
+
+    <div style="border: 1px solid #ccc; padding: 10px; margin: 10px 0">
+        <div style="padding: 10px 0">
+            <button class="uk-button" onclick="$('#test-fade').fadeOut('slow');">fadeOut('slow')</button>
+            <button class="uk-button" onclick="$('#test-fade').fadeIn('slow');">fadeIn('slow')</button>
+            <button class="uk-button" onclick="$('#test-fade').fadeToggle('slow');">fadeToggle('slow')</button>
+        </div>
+        <div style="height: 128px;">
+            <div id="test-fade" style="width: 128px; height: 128px; background-color: rgb(204, 204, 204); background-image: url(&quot;/static/img/404.png&quot;); display: block;"></div>
+        </div>
+    </div>
+
+    <div style="border: 1px solid #ccc; padding: 10px; margin: 10px 0">
+        <div style="padding: 10px 0">
+            <button class="uk-button" onclick="customAnimate();">animate()</button>
+        </div>
+        <div style="height: 256px;">
+            <div id="test-animate" style="width: 128px; height: 128px; background-color: rgb(204, 204, 204);
+            background-image: url(&quot;/static/img/404.png&quot;); background-repeat: no-repeat;
+            background-position: center center; opacity: 1;"></div>
+        </div>
+    </div>
+
+    <div style="border: 1px solid #ccc; padding: 10px; margin: 10px 0">
+        <div style="padding: 10px 0">
+            <button class="uk-button" onclick="animates();">animate</button>
+        </div>
+        <div style="height: 256px;">
+            <div id="test-animates" style="width: 128px; height: 128px; background-color: rgb(204, 204, 204);
+            background-image: url(&quot;/static/img/404.png&quot;); background-repeat: no-repeat;
+            background-position: center center; display: block;"></div>
+        </div>
+    </div>
+
+    <table id="test-table" class="uk-table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Bart Simpson</td>
+            <td>bart.s@primary.school</td>
+            <td>Springfield</td>
+            <td>Active</td>
+        </tr>
+        <tr>
+            <td>Michael Scofield</td>
+            <td>m.scofield@escape.org</td>
+            <td>Fox River</td>
+            <td>Locked</td>
+        </tr>
+        <tr>
+            <td>Optimus Prime</td>
+            <td>prime@cybertron.org</td>
+            <td>Cybertron</td>
+            <td>Active</td>
+        </tr>
+        <tr>
+            <td>Peter Parker</td>
+            <td>spider@movie.org</td>
+            <td>New York</td>
+            <td>Active</td>
+        </tr>
+        </tbody>
+    </table>
+    <p><button id="test-add-button" class="uk-button"><i class="uk-icon-plus"></i> Add</button></p>
+
 </body>
 </html>
