@@ -49,3 +49,4 @@ JavaScript study notes
     1. 修改DOM结构
  * 事件
  * 动画
+ * AJAX
