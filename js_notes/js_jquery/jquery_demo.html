@@ -52,7 +52,55 @@
             });
         }
 
-            $(function () {
+        // 编写jQuery插件
+        $.fn.highlight1 = function () {
+            // this已绑定为当前jQuery对象:
+            this.css('backgroundColor', '#fffceb').css('color', '#d85030')
+        };
+
+        $.fn.highlight2 = function (options) {
+            // options为undefined
+            // options只有部分key
+            let bgcolor = options && options.backgroundColor || '#fffceb';
+            let color = options && options.color || '#d85030';
+
+            this.css('backgroundColor', bgcolor).css('color', color);
+        };
+
+        $.fn.highlight = function (options) {
+            // 合并默认值和用户设定值:
+            let opts = $.extend({}, $.fn.highlight.defaults, options);
+            this.css('backgroundColor', opts.backgroundColor).css('color', opts.color);
+
+            return this;
+        };
+
+        // 设定默认值:
+        $.fn.highlight.defaults = {
+            color: '#d85030',
+            backgroundColor: '#fff8de'
+        };
+
+        $.fn.external = function () {
+           return this.filter('a').each(function () {
+               // 注意: each()内部的回调函数的this绑定为DOM本身!
+               let a = $(this);
+               let url = a.attr('href');
+
+               if (url && (url.indexOf('http://') === 0 || url.indexOf('http://') === 0)) {
+                   a.attr('href', '#0')
+                    .removeAttr('target')
+                    // .append(' <li class="uk-icon-external-link"></li>')
+                    .click(function () {
+                        if (confirm('你确定要前往' + url  + '？')) {
+                            window.open(url);
+                        }
+                    });
+               }
+           })
+        };
+
+        $(function () {
             'use strict';
 
             console.log('jQuery版本：' + $.fn.jquery);
@@ -492,6 +540,23 @@
             //     // data已经被解析为JSON对象了
             // });
 
+            $('#test-highlight1 span').highlight1();
+
+            $('#test-highlight2 span').highlight2({
+                backgroundColor: '#00a8e6',
+                color: '#ffffff'
+            });
+
+            $.fn.highlight.defaults.color = '#659f13';
+            $.fn.highlight.defaults.backgroundColor = '#f2fae3';
+
+            $('#test-highlight p:first-child span').highlight();
+
+            $('#test-highlight p:last-child span').highlight({
+                color: '#dd1144'
+            });
+
+            $('#test-external a').external();
         });
     </script>
 </head>
@@ -749,5 +814,31 @@
     <textarea id="test-response-text" rows="10" style="width: 90%; margin: 15px 0; resize: none;">
         响应结果：
     </textarea>
+
+    <div id="test-highlight1">
+        <p>什么是<span>jQuery</span></p>
+        <p><span>jQuery</span>是目前最流行的<span>JavaScript</span>库。</p>
+    </div>
+
+    <div id="test-highlight2">
+        <p>什么是<span>jQuery</span> <span>Plugin</span></p>
+        <p>编写<span>jQuery</span> <span>Plugin</span>可以用来扩展<span>jQuery</span>的功能。</p>
+    </div>
+
+    <div id="test-highlight">
+        <p>如何编写<span>jQuery</span> <span>Plugin</span></p>
+        <p>编写<span>jQuery</span> <span>Plugin</span>，要设置<span>默认值</span>，并允许用户修改<span>默认值</span>，或者运行时传入
+            <span>其他值</span>。</p>
+    </div>
+
+    <div id="test-external">
+        <p>如何学习<a href="http://jquery.com">jQuery</a>？</p>
+        <p>
+            首先，你要学习
+            <a href="/wiki/1022910821149312">JavaScript</a>，并了解基本的
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a>。
+        </p>
+    </div>
+
 </body>
 </html>
