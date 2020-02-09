@@ -52,4 +52,5 @@ JavaScript study notes
  * AJAX
  * 扩展
 ### 8. 错误处理
+ * 错误传播
 
