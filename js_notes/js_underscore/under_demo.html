@@ -1,0 +1,29 @@
+<!--
+@author: magician
+@file:   under_demo.html
+@date:   2020/2/9
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>under_demo</title>
+
+    <script src="https://cdn.bootcss.com/underscore.js/1.9.1/underscore-min.js"></script>
+    <script>
+        'use strict';
+
+        let a1 = [1, 4, 9, 16];
+        let a2 = {a: 1, b: 2, c: 3};
+
+        console.log(a1.map(Math.sqrt));
+        console.log(a1.filter((x) => {return x % 2 === 0;}));
+
+        console.log(_.map([1, 2, 3], (x) => x * x));
+        console.log(_.map({a: 1, b: 2, c: 3}, (v, k) => k + '=' + v));
+    </script>
+</head>
+<body>
+
+</body>
+</html>
