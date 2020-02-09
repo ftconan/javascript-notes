@@ -66,4 +66,4 @@ JavaScript study notes
  * 搭建Node开发环境
  * 模块
  * 基本模块
-
+    1. fs
