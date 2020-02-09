@@ -166,8 +166,60 @@
         console.log(register());
 
         // delay
-        let log = _.bind(console.log, console);
-        console.log(_.delay(log, 2000, 'Hello,', 'world!'));
+        // let log = _.bind(console.log, console);
+        // console.log(_.delay(log, 2000, 'Hello,', 'world!'));
+
+        // keys / allKeys
+        function Student(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        let xiaoming = new Student('小明', 20);
+        console.log(_.keys(xiaoming));
+
+        Student.prototype.school = 'No.1 Middle School';
+        let xiaoming1 = new Student('小明', 20);
+        console.log(_.allKeys(xiaoming1));
+
+        // values
+        console.log(_.values(obj));
+
+        // mapObject
+        console.log(_.mapObject({a: 1, b: 2, c: 3}, (v, k) => 100 + v));
+
+        // invert
+        console.log(_.invert(obj));
+
+        // extend / extendOwn
+        let a = {name: 'Bob', age: 20};
+        _.extend(a, {age: 15}, {age: 88, city: 'Beijing'});
+        // 变量a的内容也改变了：
+        console.log(a);
+
+        // clone
+        let source = {
+            name: '小明',
+            age: 20,
+            skills: ['JavaScript', 'CSS', 'HTML']
+        };
+        let copied = _.clone(source);
+
+        console.log(JSON.stringify(copied, null, '    '));
+        console.log(source.skills === copied.skills);
+
+        // isEqual
+        let o1 = {name: 'Bob', skills: {Java: 90, JavaScript: 99}};
+        let o2 = {name: 'Bob', skills: {JavaScript: 99, Java: 90}};
+
+        console.log(o1 === o2);
+        console.log(_.isEqual(o1, o2));
+
+        let o3 = ['Bob', { skills: ['Java', 'JavaScript'] }];
+        let o4 = ['Bob', { skills: ['Java', 'JavaScript'] }];
+
+        console.log(o3 === o4);
+        console.log(_.isEqual(o3, o4));
     </script>
 </head>
 <body>

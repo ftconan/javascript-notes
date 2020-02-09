@@ -58,4 +58,5 @@ JavaScript study notes
  * Collections
  * Arrays
  * Functions
+ * Objects
 
