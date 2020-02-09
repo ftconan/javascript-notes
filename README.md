@@ -60,4 +60,8 @@ JavaScript study notes
  * Functions
  * Objects
  * Chaining
+### 10. Node.js
+ * 安装Node.js和npm
+ * 第一个Node程序
+
 
