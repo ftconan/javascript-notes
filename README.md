@@ -56,4 +56,6 @@ JavaScript study notes
  * 异步错误处理
 ### 9. underscore
  * Collections
+ * Arrays
+ * Functions
 

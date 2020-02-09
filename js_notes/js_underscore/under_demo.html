@@ -88,6 +88,86 @@
         // 随机选3个：
         console.log(_.sample([1, 2, 3, 4, 5, 6], 3));
 
+        // first / last
+        let arr1 = [2, 4, 6, 8];
+
+        console.log(_.first(arr1));
+        console.log(_.last(arr1));
+
+        // flatten
+        _.flatten([1, [2], [3, [[4], [5]]]]);
+
+        // zip/unzip
+        let names = ['Adam', 'Lisa', 'Bart'];
+        let scores1 = [85, 92, 59];
+        let namesAndScores = [['Adam', 85], ['Lisa', 92], ['Bart', 59]];
+
+        console.log(_.zip(names, scores1));
+        console.log(_.unzip(namesAndScores));
+
+        // object
+        console.log(_.object(names, scores1));
+
+        // range
+        // 从0开始小于10:
+        console.log(10);
+        // 从1开始小于11：
+        console.log(_.range(1, 11));
+        // 从0开始小于30，步长5:
+        console.log(_.range(0, 30, 5));
+        // 从0开始大于-10，步长-1:
+        console.log(_.range(0, -10, -1));
+
+        let arr2 = ['Apple', 'orange', 'banana', 'ORANGE', 'apple', 'PEAR'];
+        let result = _.uniq(arr2, false, (x) => x.toUpperCase());
+        // 测试
+        if (result.toString() === ["Apple", "orange", "banana", "PEAR"].toString()) {
+            console.log('测试成功!');
+        } else {
+            console.log('测试失败!');
+        }
+
+        // bind
+        let s = ' Hello  ';
+        let fn = _.bind(s.trim, s);
+        console.log(fn());
+
+        // partial
+        let pow2N = _.partial(Math.pow, 2);
+        let cube = _.partial(Math.pow, _, 3);
+
+        console.log(pow2N(3));
+        console.log(pow2N(5));
+        console.log(pow2N(10));
+        console.log(cube(3));
+        console.log(cube(5));
+        console.log(cube(10));
+
+        // memoize
+        let factorial = _.memoize(function (n) {
+            console.log('start calculate ' + n + '!...');
+            if (n < 2) {
+                return 1;
+            }
+
+            return n * factorial(n - 1);
+        });
+
+        console.log(factorial(10));
+        console.log(factorial(9));
+
+        // once
+        let register = _.once(function () {
+            console.log('Register ok!');
+        });
+
+        console.log(register());
+        console.log(register());
+        console.log(register());
+
+        // delay
+        let log = _.bind(console.log, console);
+        console.log(_.delay(log, 2000, 'Hello,', 'world!'));
     </script>
 </head>
 <body>
