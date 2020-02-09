@@ -51,3 +51,5 @@ JavaScript study notes
  * 动画
  * AJAX
  * 扩展
+### 8. 错误处理
+
