@@ -220,6 +220,13 @@
 
         console.log(o3 === o4);
         console.log(_.isEqual(o3, o4));
+
+        let r = _.chain([1, 4, 9, 16, 25])
+                .map(Math.sqrt)
+                .filter(x => x % 2 === 1)
+                .values();
+
+        console.log(r);
     </script>
 </head>
 <body>

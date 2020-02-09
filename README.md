@@ -59,4 +59,5 @@ JavaScript study notes
  * Arrays
  * Functions
  * Objects
+ * Chaining
 
