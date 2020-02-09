@@ -1,0 +1,57 @@
+<!--
+@author: magician
+@file:   async_error.html
+@date:   2020/2/9
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>async_error</title>
+
+    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+        function printTime() {
+            throw new Error();
+        }
+
+        try {
+            setTimeout(printTime, 1000);
+            console.log('done');
+        } catch (e) {
+            console.log('error');
+        }
+
+        $(function () {
+            let $btn = $('#calc');
+
+            // 取消已绑定的事件:
+            $btn.off('click');
+
+            $btn.click(function () {
+                let
+                    x = parseFloat($('#x').val()),
+                    y = parseFloat($('#y').val()),
+                    r;
+
+                try {
+                    if (isNaN(x) || isNaN(y)) {
+                        throw new Error('输入错误');
+                    }
+                    r = x + y;
+                    console.log('计算结果：' + r);
+                } catch (e) {
+                    console.log('输入错误！');
+                }
+
+            });
+        });
+    </script>
+</head>
+<body>
+    <form action="">
+        <label for="x"></label><input id="x" type="text"> + <label for="y"></label><input id="y" type="text">
+        <button id="calc">计算</button>
+    </form>
+</body>
+</html>
