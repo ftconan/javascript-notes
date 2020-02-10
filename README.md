@@ -67,3 +67,4 @@ JavaScript study notes
  * 模块
  * 基本模块
     1. fs
+    2. stream
