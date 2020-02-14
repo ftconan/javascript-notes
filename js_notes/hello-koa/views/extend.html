@@ -1,0 +1,17 @@
+<!--
+@author: magician
+@file:   extend.html
+@date:   2020/2/14
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>extend</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% block header %} <h1>{{ header }}</h1> {% endblock %}
+    {% block body %} <p>{{ body }}</p> {% endblock %}
+</body>
+</html>

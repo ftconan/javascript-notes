@@ -23,6 +23,50 @@ const controller = require('./controller');
 // 使用middleware:
 app.use(controller());
 
+// 模板引擎
+const nunjucks = require('nunjucks');
+
+function createEnv(path, opts) {
+    let
+        autoescape = opts.autoescape === undefined ? true : opts.autoescape,
+        noCache = opts.noCache || false,
+        watch = opts.watch || false,
+        throwOnUndefined = opts.throwOnUndefined || false,
+        env = new nunjucks.Environment(
+            new nunjucks.FileSystemLoader('views', {
+                noCache: noCache,
+                watch: watch,
+            }), {
+                autoescape: autoescape,
+                throwOnUndefined: throwOnUndefined
+            });
+
+    if (opts.filters) {
+        for (let f in opts.filters) {
+            env.addFilter(f, opts.filters[f]);
+        }
+    }
+
+    return env;
+}
+
+let env = createEnv('views', {
+    watch: true,
+    filters: {
+        hex: function (n) {
+            return '0x' + n.toString(16);
+        }
+    }
+});
+
+let s = env.render('hello.html', {name: '小明', fruits: ['apple', 'pear', 'banana']});
+console.log(s);
+
+console.log(env.render('extend.html', {
+    header: 'Hello',
+    body: 'bla bla bla...'
+}));
+
 // 在端口3000监听:
 app.listen(3000);
 console.log('app start at port 3000...');
