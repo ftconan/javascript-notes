@@ -27,7 +27,8 @@
     "sequelize": ">=4.44.3",
     "mysql": ">=2.14.0",
     "node-uuid": "1.4.8",
-    "babel-core": "^6.26.3"
+    "babel-core": "^6.26.3",
+    "ws": "7.2.1"
   },
   "devDependencies": {
     "mocha": "7.0.1",

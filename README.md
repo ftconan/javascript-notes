@@ -83,3 +83,6 @@ JavaScript study notes
         1. 编写测试
         2. 异步测试
         3. Http测试
+    4. WebSocket
+        1. 使用ws
+        2. 编写聊天室
