@@ -75,3 +75,10 @@ JavaScript study notes
         1. koa入门
         2. 处理URL
         3. 使用Nunjucks
+        3. 使用MVC
+    2. mysql
+        1. 使用Sequelize
+        2. 建立Model
+    3.mocha
+        1. 编写测试
+        2. 异步测试
