@@ -79,6 +79,7 @@ JavaScript study notes
     2. mysql
         1. 使用Sequelize
         2. 建立Model
-    3.mocha
+    3. mocha
         1. 编写测试
         2. 异步测试
+        3. Http测试
