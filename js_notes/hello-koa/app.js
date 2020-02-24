@@ -12,6 +12,7 @@ const Koa = require('koa');
 const bodyParser = require('koa-bodyparser');
 const controller = require('./controller');
 const templating = require('./templating');
+const rest = require('./rest');
 const WebSocketServer = ws.Server;
 
 // 创建一个Koa对象表示web app本身:
@@ -101,8 +102,8 @@ app.use(async (ctx, next) => {
         start = new Date().getTime(),
         execTime;
     await next();
-    execTime = new Date().getTime() - start;
-    ctx.response.set('X-Response-Time', `${execTime}ms`);
+    // execTime = new Date().getTime() - start;
+    // ctx.response.set('X-Response-Time', `${execTime}ms`);
 });
 
 // parse user from cookie:
@@ -131,6 +132,9 @@ app.use(templating('views', {
     noCache: !isProduction,
     watch: !isProduction
 }));
+
+// bind .rest() for ctx:
+app.use(rest.restify());
 
 // add controller:
 app.use(controller());

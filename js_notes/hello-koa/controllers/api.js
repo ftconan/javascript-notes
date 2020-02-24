@@ -4,34 +4,32 @@
 @date:   2020/2/24
 */
 
-// 存储Product列表，相当于模拟数据库:
-let products = [{
-    name: 'iPhone',
-    price: 6999
-}, {
-    name: 'Kindle',
-    price: 999
-}];
+const products = require('../products');
+const APIError = require('../rest').APIError;
 
 module.exports = {
     'GET /api/products': async (ctx, next) => {
-        // 设置Content-Type:
-        ctx.response.type = 'application/json';
-        // 设置Response Body:
-        ctx.response.body = {
-            products: products
-        };
+        ctx.rest({
+            products: products.getProducts()
+        });
     },
 
-    'POST /api/products': async (ctx, netxt) => {
-        let p = {
-            name: ctx.request.body.name,
-            price: ctx.request.body.price
-        };
-        products.push(p);
-        ctx.response.type = 'application/json';
-        ctx.response.body = p;
+    'POST /api/products': async (ctx, next) => {
+        let
+            name = ctx.request.body.name,
+            manufacturer = ctx.request.body.manufacturer,
+            price = ctx.request.body.price;
+        let p = products.createProduct(name, manufacturer, price);
+        ctx.rest(p);
+    },
+
+    'DELETE /api/products/:id': async (ctx, next) => {
+        console.log(`delete product ${ctx.params.id}...`);
+        const p = products.deleteProduct(ctx.params.id);
+        if (p) {
+            ctx.rest(p);
+        } else {
+            throw new APIError('product:not_found', 'product not found by id.');
+        }
     }
 };
-
-
