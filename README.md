@@ -91,3 +91,4 @@ JavaScript study notes
         2. 开发REST API
     6. MVVM
         1. 单向绑定
+        2. 单向绑定
