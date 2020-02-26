@@ -89,3 +89,5 @@ JavaScript study notes
     5. REST
         1. 编写REST API
         2. 开发REST API
+    6. MVVM
+        1. 单向绑定

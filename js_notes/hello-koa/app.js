@@ -102,8 +102,19 @@ app.use(async (ctx, next) => {
         start = new Date().getTime(),
         execTime;
     await next();
-    // execTime = new Date().getTime() - start;
-    // ctx.response.set('X-Response-Time', `${execTime}ms`);
+    execTime = new Date().getTime() - start;
+    ctx.response.set('X-Response-Time', `${execTime}ms`);
+});
+
+// static file support:
+if (!isProduction) {
+    let staticFiles = require('./static-files');
+    app.use(staticFiles('/static/', __dirname + '/static'));
+}
+
+// redirect to /static/index.html:
+app.use(async (ctx, next) => {
+    ctx.response.redirect('/static/index.html');
 });
 
 // parse user from cookie:
@@ -111,18 +122,6 @@ app.use(async (ctx, next) => {
     ctx.state.user = parseUser(ctx.cookies.get('name' || ''));
     await next();
 });
-
-// app.use(async (ctx, next) => {
-//     var name = ctx.request.query.name || 'world';
-//     ctx.response.type = 'text/html';
-//     ctx.response.body = `<h1>Hello, ${name}!</h1>`;
-// });
-
-// static file support:
-if (!isProduction) {
-    let staticFiles = require('./static-files');
-    app.use(staticFiles('/static/', __dirname + '/static'));
-}
 
 // parse request body:
 app.use(bodyParser());
