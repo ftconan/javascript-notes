@@ -93,3 +93,6 @@ JavaScript study notes
         1. 单向绑定
         2. 单向绑定
         3. 同步DOM结构
+        4. 集成API
+        5. 在线电子表格
+    7. 自动化工具
