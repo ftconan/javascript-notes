@@ -92,3 +92,4 @@ JavaScript study notes
     6. MVVM
         1. 单向绑定
         2. 单向绑定
+        3. 同步DOM结构
