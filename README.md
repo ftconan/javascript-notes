@@ -4,7 +4,7 @@ JavaScript study notes
 
 - [JavaScript](#javascript)
     - [廖雪峰JavaScript学习笔记](#廖雪峰JavaScript学习笔记)
-    - [Vue.js](#Vue.js)
+    - [Vue](#Vue)
 
 ---
 
@@ -105,4 +105,4 @@ JavaScript study notes
         5. 在线电子表格
     7. 自动化工具
     
-## Vue.js
+## Vue
