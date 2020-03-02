@@ -3,14 +3,12 @@
 JavaScript study notes
 
 - [JavaScript](#javascript)
-    - [Admin Panels](#admin-panels)
-    - [廖雪峰学习笔记](#廖雪峰学习笔记)
+    - [廖雪峰JavaScript学习笔记](#廖雪峰JavaScript学习笔记)
+    - [Vue.js](#Vue.js)
 
 ---
 
-## Admin Panels
-
-## 廖雪峰学习笔记
+## 廖雪峰JavaScript学习笔记
 ### 1. JavaScript教程
 ### 2. 快速入门
  * 基本语法
@@ -106,3 +104,5 @@ JavaScript study notes
         4. 集成API
         5. 在线电子表格
     7. 自动化工具
+    
+## Vue.js
