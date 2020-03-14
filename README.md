@@ -106,7 +106,9 @@ JavaScript study notes
     7. 自动化工具
     
 ## Vue
-### 1. 安装 
-#### [MAC Vue install](https://www.cnblogs.com/Jack-cx/p/10934247.html)
-### 2. 介绍
-### 3. Vue 实例
+### 基础
+ * 安装 
+    1. [MAC Vue install](https://www.cnblogs.com/Jack-cx/p/10934247.html)
+ * 介绍
+ * Vue 实例
+ * 模板语法

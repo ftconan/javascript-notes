@@ -13,10 +13,12 @@
 <body>
 <div id="app">
     <!--        {{ message }} {{ name }}-->
-    {{ a }}
+<!--    {{ a }}-->
+    {{ msg }}
 </div>
 
 <script>
+    // 创建第一个vue应用
     // let app = new Vue({
     //     el: '#app',
     //     data: {
@@ -25,17 +27,56 @@
     //     }
     // });
 
-    let data = {a: 1};
+    // 数据与方法
+    // let data = {a: 1};
+    // let vm = new Vue({
+    //     el: '#app',
+    //     data: data
+    // });
+    // data.a = 'hi...new...';
+    // vm.$watch('a', function (newVal, oldVal) {
+    //     console.log(newVal, oldVal);
+    // });
+    // vm.$data.a = 'test....';
+    // console.log(vm.a === data.a);
+
+    // 生命周期
     let vm = new Vue({
         el: '#app',
-        data: data
+        data: {
+            msg: 'hi vue',
+        },
+        // 在实例初始化之后，数据观测（data observer）和event/watcher事件配置之前被调用。
+        beforeCreate: function () {
+            console.log('beforeCreate');
+        },
+        // 在实例完成创建之后被立即调用。
+        // 在这一步，实例已完成以下配置：数据观测（data observer），属性和方法的运算，watch/event事件回调。
+        // 然而，挂在阶段还没开始，$el属性目前不可见。
+        created: function () {
+            console.log('created');
+        },
+        // 在挂载开始之前被调用：相关的渲染函数首次被调用
+        beforeMount: function () {
+            console.log('beforeMount');
+        },
+        // el被新创建的vm.$el替换，挂载成功
+        mounted: function () {
+            console.log('mounted');
+        },
+        // 数据更新时调用
+        beforeUpdate: function () {
+            console.log('beforeUpdate');
+        },
+        // 组件DOM已经更新，组件更新完毕
+        updated: function () {
+            console.log('updated');
+        }
     });
-    // data.a = 'hi...new...';
-    vm.$watch('a', function (newVal, oldVal) {
-        console.log(newVal, oldVal);
-    });
-    vm.$data.a = 'test....';
-    // console.log(vm.a === data.a);
+
+    setTimeout(function () {
+        vm.msg = 'change......';
+    }, 3000);
 </script>
 </body>
 </html>
