@@ -8,21 +8,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Hello Vue</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="../static/js/vue.js"></script>
 </head>
 <body>
-    <div id="app">
-        {{ message }} {{ name }}
-    </div>
+<div id="app">
+    <!--        {{ message }} {{ name }}-->
+    {{ a }}
+</div>
 
-    <script>
-        let app = new Vue({
-            el: '#app',
-            data: {
-                message: 'Hello ',
-                name: 'Vue!'
-            }
-        });
-    </script>
+<script>
+    // let app = new Vue({
+    //     el: '#app',
+    //     data: {
+    //         message: 'Hello ',
+    //         name: 'Vue!'
+    //     }
+    // });
+
+    let data = {a: 1};
+    let vm = new Vue({
+        el: '#app',
+        data: data
+    });
+    // data.a = 'hi...new...';
+    vm.$watch('a', function (newVal, oldVal) {
+        console.log(newVal, oldVal);
+    });
+    vm.$data.a = 'test....';
+    // console.log(vm.a === data.a);
+</script>
 </body>
 </html>
