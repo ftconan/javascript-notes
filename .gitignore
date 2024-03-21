@@ -3,3 +3,22 @@
 
 # hello-koa
 /js_notes/hello-koa/node_modules/
+
+.DS_Store
+vue_notes/node_modules
+vue_notes/vue2_runoob/dist
+vue_notes/vue2_runoob/npm-debug.log*
+vue_notes/vue2_runoob/yarn-debug.log*
+vue_notes/vue2_runoob/yarn-error.log*
+vue_notes/vue2_runoob/package-lock.json
+
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+.idea/
+*/.idea/
+*.zip
+.vscode/

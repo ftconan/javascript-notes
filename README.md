@@ -3,8 +3,22 @@
 JavaScript study notes
 
 - [JavaScript](#javascript)
-    - [廖雪峰JavaScript学习笔记](#廖雪峰JavaScript学习笔记)
-    - [Vue](#Vue)
+  - [廖雪峰JavaScript学习笔记](#廖雪峰javascript学习笔记)
+    - [1. JavaScript教程](#1-javascript教程)
+    - [2. 快速入门](#2-快速入门)
+    - [3. 函数](#3-函数)
+    - [4. 标准对象](#4-标准对象)
+    - [5. 面向对象编程](#5-面向对象编程)
+    - [6. 浏览器](#6-浏览器)
+    - [7. jQuery](#7-jquery)
+    - [8. 错误处理](#8-错误处理)
+    - [9. underscore](#9-underscore)
+    - [10. Node.js](#10-nodejs)
+  - [Vue](#vue)
+    - [基础](#基础)
+  - [Vue2菜鸟教程](#vue2菜鸟教程)
+    - [1. Vue.js 安装](#1-vuejs-安装)
+    - [2. Vue.js 目录结构](#2-vuejs-目录结构)
 
 ---
 
@@ -112,3 +126,17 @@ JavaScript study notes
  * 介绍
  * Vue 实例
  * 模板语法
+## Vue2菜鸟教程
+### 1. Vue.js 安装
+ * vue初始化项目脚本
+ ```shell
+# Vue2稳定版
+$ cnpm install vue@^2
+# 最新稳定版
+$ cnpm install vue
+# 全局安装 vue-cli
+$ cnpm install --global vue-cli
+# 创建一个基于 webpack 模板的新项目
+$ vue init webpack my-project
+ ```
+### 2. Vue.js 目录结构
