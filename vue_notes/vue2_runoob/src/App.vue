@@ -1,13 +1,23 @@
 <template>
-  <div id="app">
+  <!-- <div id="app">
     <img src="./assets/logo.png">
     <router-view/>
+  </div> -->
+  <div class="hello">
+    <h1>{{ msg }}</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App'
+  // name: 'App'
+  name: 'App',
+  data () {
+    return {
+      'msg': '欢迎来到菜鸟教程！'
+    }
+  }
+
 }
 </script>
 
