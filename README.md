@@ -19,6 +19,7 @@ JavaScript study notes
   - [Vue2菜鸟教程](#vue2菜鸟教程)
     - [1. Vue.js 安装](#1-vuejs-安装)
     - [2. Vue.js 目录结构](#2-vuejs-目录结构)
+    - [3. Vue.js 起步](#3-vuejs-起步)
 
 ---
 
@@ -140,3 +141,4 @@ $ cnpm install --global vue-cli
 $ vue init webpack my-project
  ```
 ### 2. Vue.js 目录结构
+### 3. Vue.js 起步
