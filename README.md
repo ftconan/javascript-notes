@@ -21,6 +21,7 @@ JavaScript study notes
     - [2. Vue.js 目录结构](#2-vuejs-目录结构)
     - [3. Vue.js 起步](#3-vuejs-起步)
     - [4. Vue.js 模版语法](#4-vuejs-模版语法)
+    - [5. Vue.js 条件语句](#5-vuejs-条件语句)
 
 ---
 
@@ -144,3 +145,4 @@ $ vue init webpack my-project
 ### 2. Vue.js 目录结构
 ### 3. Vue.js 起步
 ### 4. Vue.js 模版语法
+### 5. Vue.js 条件语句
