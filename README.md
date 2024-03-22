@@ -20,6 +20,7 @@ JavaScript study notes
     - [1. Vue.js 安装](#1-vuejs-安装)
     - [2. Vue.js 目录结构](#2-vuejs-目录结构)
     - [3. Vue.js 起步](#3-vuejs-起步)
+    - [4. Vue.js 模版语法](#4-vuejs-模版语法)
 
 ---
 
@@ -142,3 +143,4 @@ $ vue init webpack my-project
  ```
 ### 2. Vue.js 目录结构
 ### 3. Vue.js 起步
+### 4. Vue.js 模版语法

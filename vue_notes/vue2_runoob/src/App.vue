@@ -1,21 +1,16 @@
 <template>
-  <!-- <div id="app">
+  <div id="app">
     <img src="./assets/logo.png">
-    <router-view/>
-  </div> -->
-  <!-- <div class="hello">
-    <h1>{{ msg }}</h1>
-  </div> -->
-  <div id="vue_det">
-    <h3>site:{{ site }}</h3>
+    <!-- <h3>site:{{ site }}</h3>
     <h3>url:{{ url }}</h3>
-    <h3>{{ details() }}</h3>
+    <h3>{{ details() }}</h3> -->
+    <router-view />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'vue_det',
+  name: 'app',
   // data () {
   //   return {
   //     'msg': '欢迎来到菜鸟教程！'
