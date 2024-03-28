@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import Temp from '@/components/Temp'
 import Condition from '@/components/Condition'
 import Loop from '@/components/Loop'
+import Computed from '@/components/Computed'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/loop',
       name: 'Loop',
       component: Loop
+    },
+    {
+      path: '/computed',
+      name: 'Computed',
+      component: Computed
     }
   ]
 })
