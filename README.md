@@ -22,6 +22,7 @@ JavaScript study notes
     - [3. Vue.js 起步](#3-vuejs-起步)
     - [4. Vue.js 模版语法](#4-vuejs-模版语法)
     - [5. Vue.js 条件语句](#5-vuejs-条件语句)
+    - [6. Vue.js 循环语句](#6-vuejs-循环语句)
 
 ---
 
@@ -146,3 +147,4 @@ $ vue init webpack my-project
 ### 3. Vue.js 起步
 ### 4. Vue.js 模版语法
 ### 5. Vue.js 条件语句
+### 6. Vue.js 循环语句
