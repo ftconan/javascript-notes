@@ -6,6 +6,7 @@ import Condition from '@/components/Condition'
 import Loop from '@/components/Loop'
 import Computed from '@/components/Computed'
 import Watch from '@/components/Watch'
+import Style from '@/components/Style'
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
       path: '/watch',
       name: 'Watch',
       component: Watch
+    },
+    {
+      path: '/style',
+      name: 'Style',
+      component: Style
     }
   ]
 })

@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: 'condition',
+  name: 'watch',
   data () {
     return {
       counter: 1,
