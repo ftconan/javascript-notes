@@ -24,6 +24,7 @@ JavaScript study notes
     - [5. Vue.js 条件语句](#5-vuejs-条件语句)
     - [6. Vue.js 循环语句](#6-vuejs-循环语句)
     - [7. Vue.js 计算属性](#7-vuejs-计算属性)
+    - [8. Vue.js 计算属性](#8-vuejs-计算属性)
 
 ---
 
@@ -150,3 +151,4 @@ $ vue init webpack my-project
 ### 5. Vue.js 条件语句
 ### 6. Vue.js 循环语句
 ### 7. Vue.js 计算属性
+### 8. Vue.js 计算属性
