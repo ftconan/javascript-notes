@@ -8,6 +8,7 @@ import Computed from '@/components/Computed'
 import Watch from '@/components/Watch'
 import Style from '@/components/Style'
 import Event from '@/components/Event'
+import Form from '@/components/Form'
 
 Vue.use(Router)
 
@@ -52,6 +53,11 @@ export default new Router({
       path: '/event',
       name: 'Event',
       component: Event
+    },
+    {
+      path: '/form',
+      name: 'Form',
+      component: Form
     }
   ]
 })
