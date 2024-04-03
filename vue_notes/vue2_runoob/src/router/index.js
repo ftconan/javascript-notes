@@ -7,6 +7,7 @@ import Loop from '@/components/Loop'
 import Computed from '@/components/Computed'
 import Watch from '@/components/Watch'
 import Style from '@/components/Style'
+import Event from '@/components/Event'
 
 Vue.use(Router)
 
@@ -46,6 +47,11 @@ export default new Router({
       path: '/style',
       name: 'Style',
       component: Style
+    },
+    {
+      path: '/event',
+      name: 'Event',
+      component: Event
     }
   ]
 })

@@ -26,6 +26,7 @@ JavaScript study notes
     - [7. Vue.js 计算属性](#7-vuejs-计算属性)
     - [8. Vue.js 计算属性](#8-vuejs-计算属性)
     - [9. Vue.js 样式绑定](#9-vuejs-样式绑定)
+    - [10. Vue.js 事件处理器](#10-vuejs-事件处理器)
 
 ---
 
@@ -154,3 +155,4 @@ $ vue init webpack my-project
 ### 7. Vue.js 计算属性
 ### 8. Vue.js 计算属性
 ### 9. Vue.js 样式绑定
+### 10. Vue.js 事件处理器
