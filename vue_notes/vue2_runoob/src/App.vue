@@ -10,11 +10,16 @@
     <h3>{{ details() }}</h3> -->
     <p v-highlight="'custom-highlight-class'">Hover over me to see the highlighting effect.</p>
     <p v-highlight>Hover over me too!</p>
+    <h1>Axios Demo</h1>
+    <button @click="fetchData">Fetch Data</button>
+    <button @click="postData">Post Data</button>
+    <pre v-if="responseData">{{ JSON.stringify(responseData, null, 2) }}</pre>
     <router-view />
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 import highlightDirective from '@/directives/highlightDirective' // 假设该文件位于项目中的 'directives' 目录下
 
 export default {
@@ -28,7 +33,8 @@ export default {
     return {
       'site': '菜鸟教程',
       'url': 'www.runoob.com',
-      'alexa': '10000'
+      'alexa': '10000',
+      responseData: null
     }
   },
   directives: {
@@ -37,6 +43,26 @@ export default {
   methods: {
     details: function () {
       return this.site + ' - 学的不仅是技术，更是梦想！'
+    },
+    async fetchData () {
+      try {
+        const response = await axios.get('https://jsonplaceholder.typicode.com/todos/1')
+        this.responseData = response.data
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    async postData () {
+      try {
+        const response = await axios.post('https://jsonplaceholder.typicode.com/posts', {
+          title: 'foo',
+          body: 'bar',
+          userId: 1
+        })
+        this.responseData = response.data
+      } catch (error) {
+        console.error(error)
+      }
     }
   }
 
