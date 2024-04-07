@@ -1,5 +1,9 @@
 <template>
   <div id="app">
+    <nav>
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </nav>
     <img src="./assets/logo.png">
     <!-- <h3>site:{{ site }}</h3>
     <h3>url:{{ url }}</h3>

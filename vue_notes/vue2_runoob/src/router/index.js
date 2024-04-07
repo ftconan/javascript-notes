@@ -10,11 +10,25 @@ import Style from '@/components/Style'
 import Event from '@/components/Event'
 import Form from '@/components/Form'
 import ParentComponent from '@/components/ParentComponent'
+import Home from '../views/Home.vue'
+import About from '../views/About.vue'
 
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history', // 使用 HTML5 History 模式
+  base: process.env.BASE_URL,
   routes: [
+    {
+      path: '/',
+      name: 'home',
+      component: Home
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: About
+    },
     {
       path: '/',
       name: 'HelloWorld',

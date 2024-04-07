@@ -31,6 +31,13 @@ JavaScript study notes
     - [12. Vue.js 组件](#12-vuejs-组件)
     - [13. Vue.js 组件 - 自定义事件](#13-vuejs-组件---自定义事件)
     - [14. Vue.js 自定义指令](#14-vuejs-自定义指令)
+    - [15. Vue.js 路由](#15-vuejs-路由)
+    - [16. Vue.js 过渡 \& 动画](#16-vuejs-过渡--动画)
+    - [17. Vue.js 混入](#17-vuejs-混入)
+    - [18. Vue.js Ajax(axios)](#18-vuejs-ajaxaxios)
+    - [19. Vue.js Ajax(vue-resource)](#19-vuejs-ajaxvue-resource)
+    - [20. Vue.js 响应接口](#20-vuejs-响应接口)
+    - [21. Vue.js 实例](#21-vuejs-实例)
 
 ---
 
@@ -164,3 +171,10 @@ $ vue init webpack my-project
 ### 12. Vue.js 组件
 ### 13. Vue.js 组件 - 自定义事件
 ### 14. Vue.js 自定义指令
+### 15. Vue.js 路由
+### 16. Vue.js 过渡 & 动画
+### 17. Vue.js 混入
+### 18. Vue.js Ajax(axios)
+### 19. Vue.js Ajax(vue-resource)
+### 20. Vue.js 响应接口
+### 21. Vue.js 实例
