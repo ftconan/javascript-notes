@@ -30,6 +30,7 @@ JavaScript study notes
     - [11. Vue.js 表单](#11-vuejs-表单)
     - [12. Vue.js 组件](#12-vuejs-组件)
     - [13. Vue.js 组件 - 自定义事件](#13-vuejs-组件---自定义事件)
+    - [14. Vue.js 自定义指令](#14-vuejs-自定义指令)
 
 ---
 
@@ -162,3 +163,4 @@ $ vue init webpack my-project
 ### 11. Vue.js 表单
 ### 12. Vue.js 组件
 ### 13. Vue.js 组件 - 自定义事件
+### 14. Vue.js 自定义指令

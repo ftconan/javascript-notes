@@ -4,11 +4,15 @@
     <!-- <h3>site:{{ site }}</h3>
     <h3>url:{{ url }}</h3>
     <h3>{{ details() }}</h3> -->
+    <p v-highlight="'custom-highlight-class'">Hover over me to see the highlighting effect.</p>
+    <p v-highlight>Hover over me too!</p>
     <router-view />
   </div>
 </template>
 
 <script>
+import highlightDirective from '@/directives/highlightDirective' // 假设该文件位于项目中的 'directives' 目录下
+
 export default {
   name: 'app',
   // data () {
@@ -22,6 +26,9 @@ export default {
       'url': 'www.runoob.com',
       'alexa': '10000'
     }
+  },
+  directives: {
+    highlight: highlightDirective
   },
   methods: {
     details: function () {
@@ -40,5 +47,12 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.highlight {
+  background-color: yellow;
+}
+
+.custom-highlight-class {
+  background-color: lightblue;
 }
 </style>
