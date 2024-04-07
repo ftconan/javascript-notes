@@ -9,7 +9,7 @@ import Watch from '@/components/Watch'
 import Style from '@/components/Style'
 import Event from '@/components/Event'
 import Form from '@/components/Form'
-import Module from '@/components/Module'
+import ParentComponent from '@/components/ParentComponent'
 
 Vue.use(Router)
 
@@ -61,9 +61,9 @@ export default new Router({
       component: Form
     },
     {
-      path: '/module',
-      name: 'Module',
-      component: Module
+      path: '/pc',
+      name: 'ParentComponent',
+      component: ParentComponent
     }
   ]
 })
