@@ -14,6 +14,11 @@
     <button @click="fetchData">Fetch Data</button>
     <button @click="postData">Post Data</button>
     <pre v-if="responseData">{{ JSON.stringify(responseData, null, 2) }}</pre>
+    <h1>Vue.js 响应接口 Demo</h1>
+    <p>Count: {{ count }}</p>
+    <button @click="incrementCounter">Increment Counter</button>
+    <button @click="decrementCounter">Decrement Counter</button>
+    <button @click="asyncUpdateCounter">Async Update Counter (+20 after 2 seconds)</button>
     <router-view />
   </div>
 </template>
@@ -34,7 +39,8 @@ export default {
       'site': '菜鸟教程',
       'url': 'www.runoob.com',
       'alexa': '10000',
-      responseData: null
+      responseData: null,
+      count: 0
     }
   },
   directives: {
@@ -63,6 +69,17 @@ export default {
       } catch (error) {
         console.error(error)
       }
+    },
+    incrementCounter () {
+      this.count++
+    },
+    decrementCounter () {
+      this.count--
+    },
+    asyncUpdateCounter () {
+      setTimeout(() => {
+        this.count += 20
+      }, 2000)
     }
   }
 
