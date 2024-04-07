@@ -16,8 +16,8 @@ import About from '../views/About.vue'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history', // 使用 HTML5 History 模式
-  base: process.env.BASE_URL,
+  // mode: 'history', // 使用 HTML5 History 模式
+  // base: process.env.BASE_URL,
   routes: [
     {
       path: '/',
