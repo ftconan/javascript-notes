@@ -29,6 +29,7 @@ JavaScript study notes
     - [10. Vue.js 事件处理器](#10-vuejs-事件处理器)
     - [11. Vue.js 表单](#11-vuejs-表单)
     - [12. Vue.js 组件](#12-vuejs-组件)
+    - [13. Vue.js 组件 - 自定义事件](#13-vuejs-组件---自定义事件)
 
 ---
 
@@ -160,3 +161,4 @@ $ vue init webpack my-project
 ### 10. Vue.js 事件处理器
 ### 11. Vue.js 表单
 ### 12. Vue.js 组件
+### 13. Vue.js 组件 - 自定义事件
